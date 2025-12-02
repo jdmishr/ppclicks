@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPClicks – Google Ads Management That Prints Money</title>
+  <meta name="description" content="Expert Google Ads management for local businesses. Turn ad spend into measurable growth with our certified team. Get a free audit today!" />
+
+  <!-- Twind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/images/ppclicks.ico" />
+
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .btn-primary {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      transition: all .3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(16,185,129,.3);
+    }
+    .btn-secondary {
+      border: 2px solid #10b981;
+      color: #10b981;
+      transition: all .3s ease;
+    }
+    .btn-secondary:hover {
+      background: #10b981;
+      color: #fff;
+    }
+    .stat-number {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sticky-nav {
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.95);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all .6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Sticky Nav -->
+  <nav class="sticky top-0 z-50 sticky-nav border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="text-2xl font-bold text-gray-900">
+	  <a href="/">
+	    <img src="/images/ppclicks_logo.webp" width="130">
+	  </a>
+	</div>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="/#services" class="text-gray-700 hover:text-green-600">Services</a>
+          <a href="/#case-studies" class="text-gray-700 hover:text-green-600">Case Studies</a>
+          <a href="/#book-call" class="btn-primary text-white px-4 py-2 rounded-lg">Free Audit</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  
+<section class="max-w-7xl mx-auto px-4 py-16">
+  <h1 class="text-5xl text-center font-bold mb-6 text-gray-800">Case Studies – PPClicks</h1>
+  <div class="prose max-w-3xl mx-auto text-gray-700">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Our Success Stories</h1>
+  <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+    At PPClicks, we don’t just run ads — we deliver measurable results. Here’s a selection of **Google Ads campaigns** we’ve managed, highlighting KPIs, ROI growth, and business impact.
+  </p>
+  <div class="grid md:grid-cols-2 gap-8">
+    <!-- Case Study 1 -->
+    <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Local E-commerce Client</h2>
+      <p class="text-gray-600 mb-4"><span class="font-semibold">Challenge:</span> High cart abandonment (78%) and low conversion rate (1.2%).</p>
+      <p class="text-gray-600 mb-4"><span class="font-semibold">Solution:</span> Segmented remarketing campaigns with dynamic product ads and sequential messaging.</p>
+      <div class="mt-4 space-y-2">
+        <p class="text-green-600 font-semibold">✅ 43% of abandoned carts recovered</p>
+        <p class="text-green-600 font-semibold">✅ 4.8x ROAS within 90 days</p>
+        <p class="text-green-600 font-semibold">✅ 68% lower cost per acquisition</p>
+      </div>
+    </div>
+    <!-- Case Study 2 -->
+    <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">B2B SaaS Company</h2>
+      <p class="text-gray-600 mb-4"><span class="font-semibold">Challenge:</span> High CAC ($380) and low conversion rate (1.8%).</p>
+      <p class="text-gray-600 mb-4"><span class="font-semibold">Solution:</span> Optimized search campaigns, high-converting landing pages, and strategic keyword targeting.</p>
+      <div class="mt-4 space-y-2">
+        <p class="text-green-600 font-semibold">✅ CAC reduced to $142 (62.6% reduction)</p>
+        <p class="text-green-600 font-semibold">✅ Conversion rate increased to 6.4%</p>
+        <p class="text-green-600 font-semibold">✅ Quality Score improved from 3/10 to 8.2/10</p>
+      </div>
+    </div>
+    <!-- Case Study 3 -->
+    <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Professional Services Client</h2>
+      <p class="text-gray-600 mb-4"><span class="font-semibold">Challenge:</span> Low lead quality and inconsistent ad performance.</p>
+      <p class="text-gray-600 mb-4"><span class="font-semibold">Solution:</span> Smart bidding optimization, ad copy A/B testing, and landing page enhancements.</p>
+      <div class="mt-4 space-y-2">
+        <p class="text-green-600 font-semibold">✅ +127% conversion rate improvement</p>
+        <p class="text-green-600 font-semibold">✅ 38% lower cost per acquisition</p>
+        <p class="text-green-600 font-semibold">✅ 43% account efficiency boost</p>
+      </div>
+    </div>
+    <!-- Case Study 4 -->
+    <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">E-commerce Retailer</h2>
+      <p class="text-gray-600 mb-4"><span class="font-semibold">Challenge:</span> Low ROAS and limited visibility in search results.</p>
+      <p class="text-gray-600 mb-4"><span class="font-semibold">Solution:</span> Data-driven search campaigns, remarketing, and competitive keyword strategy.</p>
+      <div class="mt-4 space-y-2">
+        <p class="text-green-600 font-semibold">✅ 520% ROAS increase</p>
+        <p class="text-green-600 font-semibold">✅ Average revenue per click $8.50</p>
+        <p class="text-green-600 font-semibold">✅ Market share and search impression share growth</p>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-12">
+    <a href="https://calendly.com/rajatsharmatechy859/google-ads" class="inline-block btn-primary text-white px-6 py-3 rounded-lg text-lg font-semibold">
+      Book Your Free Audit
+    </a>
+  </div>
+</section>
+
+  </div>
+</section>
+
+
+
+
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-4">PPClicks</h3>
+        <p class="text-gray-400 text-sm">Google Ads management that prints money for local businesses.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Services</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a class="hover:text-white" href="https://ppclicks.com/services/search-ads">Search Ads</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/services/local-services-ads">Local Services Ads</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/services/remarketing">Remarketing</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/services/landing-pages">Landing Pages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Company</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a class="hover:text-white" href="https://ppclicks.com/company">About</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/company/case-studies">Case Studies</a></li>
+          <li><a class="hover:text-white" href="/career">Careers</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/company/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Connect</h4>
+        <div class="flex space-x-4">
+          <a class="text-gray-400 hover:text-white" href="#"><i class="fab fa-linkedin"></i></a>
+          <a class="text-gray-400 hover:text-white" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="text-gray-400 hover:text-white" href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+      2025 PPClicks. All rights reserved. | <a class="hover:text-white" href="https://ppclicks.com/company/privacy-policy">Privacy Policy</a> | <a class="hover:text-white" href="https://ppclicks.com/company/terms-of-service">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        menu.classList.add('hidden'); // close mobile menu
+      });
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.target.classList.toggle('visible', entry.isIntersecting));
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form handler
+    document.getElementById('audit-form').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thanks! We’ll email your free audit within 24 hours.');
+      e.target.reset();
+    });
+  </script>
+   
+</body>
+</html>

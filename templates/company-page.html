@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="max-w-7xl mx-auto px-4 py-16">
+  <h1 class="text-5xl text-center font-bold mb-6 text-gray-800">{{ page.title }}</h1>
+  <div class="prose max-w-3xl mx-auto text-gray-700">
+    {{ page.content | safe }}
+  </div>
+</section>
+
+{% if page.slug == "contact" %}
+<section class="bg-gray-50 py-16">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800">Get in Touch</h2>
+    <form id="audit-form" class="space-y-4 bg-white p-8 rounded-xl shadow-lg">
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Name</label>
+        <input type="text" name="name" class="w-full border-gray-300 rounded-lg p-3" required>
+      </div>
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Email</label>
+        <input type="email" name="email" class="w-full border-gray-300 rounded-lg p-3" required>
+      </div>
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Message</label>
+        <textarea name="message" class="w-full border-gray-300 rounded-lg p-3" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary px-6 py-3 rounded-lg text-lg font-semibold text-white">Send Message</button>
+    </form>
+  </div>
+</section>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPC Audit Checklist - Google Ads</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .intro {
+            padding: 30px;
+            background: #f8f9ff;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .intro h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-item:hover {
+            background: #eef1ff;
+            transform: translateX(5px);
+        }
+        
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #667eea;
+            border-radius: 4px;
+            margin-right: 15px;
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox:hover {
+            background: #eef1ff;
+        }
+        
+        input[type="checkbox"] {
+            display: none;
+        }
+        
+        input[type="checkbox"]:checked + .checkbox {
+            background: #667eea;
+            border-color: #667eea;
+        }
+        
+        input[type="checkbox"]:checked + .checkbox::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 18px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .item-content {
+            flex: 1;
+        }
+        
+        .item-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .item-description {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .priority {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .priority-high {
+            background: #fee;
+            color: #c33;
+        }
+        
+        .priority-medium {
+            background: #fef3cd;
+            color: #856404;
+        }
+        
+        .priority-low {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .footer {
+            background: #f8f9ff;
+            padding: 30px;
+            text-align: center;
+            border-top: 3px solid #667eea;
+        }
+        
+        .footer h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .cta-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Google Ads PPC Audit Checklist</h1>
+            <p>Your Complete Guide to Optimizing Campaign Performance</p>
+        </div>
+        
+        <div class="intro">
+            <h2>How to Use This Checklist</h2>
+            <p>Work through each section systematically. Check off items as you audit them and note any issues that need immediate attention. This checklist covers the critical elements that separate winning campaigns from money pits.</p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Checkpoints</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Key Areas</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30min</div>
+                    <div class="stat-label">Audit Time</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- Section 1: Account Structure -->
+            <div class="section">
+                <h3><span class="section-icon">1</span> Account Structure & Organization</h3>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item1">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Logical Campaign Organization <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Campaigns are organized by product/service, location, or business goal — not thrown together randomly.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item2">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Proper Ad Group Themes <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Each ad group focuses on a tight theme (5-20 related keywords max) for better Quality Scores.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item3">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Clear Naming Conventions <span class="priority priority-low">LOW</span></div>
+                        <div class="item-description">Campaign and ad group names clearly indicate targeting, location, or offer (e.g., "Search-NYC-Plumbers-Emergency").</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item4">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Separate Brand vs. Non-Brand <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Brand keywords are in separate campaigns to protect them and track performance independently.</div>
+                    </div>
+                </label>
+            </div>
+            
+            <!-- Section 2: Keywords & Match Types -->
+            <div class="section">
+                <h3><span class="section-icon">2</span> Keywords & Match Types</h3>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item5">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Relevant Search Terms Only <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Review Search Terms report — add irrelevant queries as negative keywords immediately.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item6">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Balanced Match Type Strategy <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Mix of Exact, Phrase, and Broad Match (with smart bidding) based on goals and budget.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item7">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Negative Keyword Lists Applied <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Campaign-level and account-level negative keywords prevent wasted spend (e.g., "free," "jobs," "DIY").</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item8">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Keyword Quality Scores Above 5 <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Most keywords have Quality Score of 6+ (check in keyword view). Low scores = higher CPCs.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item9">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Remove Low-Performing Keywords <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Pause keywords with 0 conversions after significant spend or impressions.</div>
+                    </div>
+                </label>
+            </div>
+            
+            <!-- Section 3: Ad Copy & Extensions -->
+            <div class="section">
+                <h3><span class="section-icon">3</span> Ad Copy & Extensions</h3>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item10">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Responsive Search Ads (RSAs) Optimized <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Use all 15 headlines and 4 descriptions. Pin important headlines to position 1 when needed.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item11">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Keywords in Ad Copy <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Target keywords appear in headlines and descriptions for relevance and Quality Score.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item12">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Clear Call-to-Action (CTA) <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Every ad has a specific CTA: "Get a Quote," "Book Now," "Shop Today," etc.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item13">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">All Ad Extensions Enabled <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Sitelinks, callouts, structured snippets, call extensions, location extensions all active and relevant.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item14">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Mobile-Optimized Messaging <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Mobile ads emphasize "Call Now" or location if targeting mobile users heavily.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item15">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">A/B Testing Active <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Testing different headlines, CTAs, or value propositions in RSAs.</div>
+                    </div>
+                </label>
+            </div>
+            
+            <!-- Section 4: Landing Pages -->
+            <div class="section">
+                <h3><span class="section-icon">4</span> Landing Pages & User Experience</h3>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item16">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Message Match <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Landing page headline/content matches the ad copy and keyword intent exactly.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item17">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Fast Page Load Speed <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Pages load in under 3 seconds (test with PageSpeed Insights). Slow pages kill conversions.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item18">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Mobile Responsive Design <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Landing pages look great and function perfectly on mobile devices.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item19">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Clear Single CTA <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">One primary conversion action (form, call, purchase) is obvious and easy to complete.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item20">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Trust Signals Present <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Reviews, testimonials, certifications, or guarantees visible on landing page.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item21">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Form Fields Minimized <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Only ask for essential information. Each field reduces conversion rates by ~5-10%.</div>
+                    </div>
+                </label>
+            </div>
+            
+            <!-- Section 5: Bidding & Budget -->
+            <div class="section">
+                <h3><span class="section-icon">5</span> Bidding Strategy & Budget</h3>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item22">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Appropriate Bidding Strategy <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Using Target CPA, Target ROAS, or Maximize Conversions based on business goals and conversion data.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item23">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Budget Not Limited <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Campaigns showing "Limited by Budget" are losing potential conversions. Increase budget or pause low performers.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item24">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Bid Adjustments Configured <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Device, location, and time-of-day bid adjustments based on performance data.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item25">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Sufficient Conversion Data <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Smart bidding strategies have at least 30 conversions in the last 30 days for optimal learning.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item26">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">ROAS or CPA Targets Realistic <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Target metrics are based on actual performance data, not wishful thinking.</div>
+                    </div>
+                </label>
+            </div>
+            
+            <!-- Section 6: Conversion Tracking -->
+            <div class="section">
+                <h3><span class="section-icon">6</span> Conversion Tracking & Analytics</h3>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item27">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">All Conversions Tracked <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Form submissions, calls, purchases, app downloads — every important action is tracked.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item28">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Conversion Values Assigned <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Each conversion has a value assigned for accurate ROAS calculation (even if estimated).</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item29">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Google Analytics 4 Linked <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">GA4 is connected to Google Ads for deeper insights into user behavior.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item30">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Testing Conversions Regularly <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Conversion tracking is tested monthly to ensure it's firing correctly.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item31">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Enhanced Conversions Enabled <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Using enhanced conversions for better tracking accuracy in privacy-first world.</div>
+                    </div>
+                </label>
+            </div>
+            
+            <!-- Section 7: Audience & Targeting -->
+            <div class="section">
+                <h3><span class="section-icon">7</span> Audience & Targeting</h3>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item32">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Location Targeting Precise <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Only targeting locations where you actually serve customers. Exclude irrelevant areas.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item33">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Ad Schedule Optimized <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Ads run during hours when your business is open or when conversions are highest.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item34">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Remarketing Lists Active <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Using RLSA (Remarketing Lists for Search Ads) to target previous visitors with adjusted bids.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item35">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Customer Match Lists Used <span class="priority priority-low">LOW</span></div>
+                        <div class="item-description">Uploading customer emails for targeting or exclusion (exclude existing customers from acquisition campaigns).</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item36">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Audience Insights Reviewed <span class="priority priority-low">LOW</span></div>
+                        <div class="item-description">Regularly check audience demographics and adjust targeting based on who's actually converting.</div>
+                    </div>
+                </label>
+            </div>
+            
+            <!-- Bonus Section: Performance & Optimization -->
+            <div class="section">
+                <h3><span class="section-icon">✨</span> Performance & Ongoing Optimization</h3>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item37">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Weekly Performance Reviews <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Check key metrics weekly: CTR, conversion rate, CPA, ROAS, Quality Score trends.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item38">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Search Terms Reviewed Bi-Weekly <span class="priority priority-high">HIGH</span></div>
+                        <div class="item-description">Add negative keywords every 1-2 weeks to stop waste immediately.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item39">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Recommendations Reviewed <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Check Google's recommendations but apply selectively — not all are good for your goals.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item40">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Competitor Analysis Done <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">Use Auction Insights to see who you're competing against and how you stack up.</div>
+                    </div>
+                </label>
+                
+                <label class="checklist-item">
+                    <input type="checkbox" id="item41">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-title">Low Impression Share Addressed <span class="priority priority-medium">MEDIUM</span></div>
+                        <div class="item-description">If losing impression share to rank or budget, take action to improve visibility.</div>
+                    </div>
+                </label>
+            </div>
+            
+        </div>
+        
+        <div class="footer">
+            <h3>Ready to Transform Your Google Ads Performance?</h3>
+            <p>Use this checklist monthly to catch issues before they drain your budget. For a professional audit and personalized optimization strategy, let's talk.</p>
+            <a href="#" class="cta-button" onclick="alert('Visit adswizard.com for professional Google Ads management'); return false;">Get Professional Help →</a>
+            <p style="margin-top: 20px; font-size: 0.9em; color: #666;">
+                <strong>Ads Wizard</strong> • Turning Ad Spend Into Revenue<br>
+                adswizard.com/podcast
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Save checkbox states to memory
+        const checkboxStates = {};
+        
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                checkboxStates[this.id] = this.checked;
+                updateProgress();
+            });
+        });
+	</script>

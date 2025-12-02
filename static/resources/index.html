@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Ads Resources Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-animation {
+            background-size: 200% 200%;
+            animation: gradient 8s ease infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+    
+    <!-- Header -->
+    <header class="gradient-animation bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-4">📚 Google Ads Resources</h1>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+                    Your complete toolkit for Google Ads success. Access templates, guides, and tools to streamline your campaigns.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Featured Resources -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="text-4xl">⭐</span>
+                <h2 class="text-3xl font-bold text-gray-900">Featured Resources</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Featured Card 1 -->
+                <a href="/onboarding-questionnare.html" class="group block">
+                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 transform hover:-translate-y-1">
+                        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-6">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                    <span class="text-4xl">🚀</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-1">Onboarding & Strategy Documents</h3>
+                                    <p class="text-blue-100">Complete setup templates</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Comprehensive templates including discovery questionnaires, audit reports, competitor analysis, and 90-day strategy blueprints.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">5 Templates</span>
+                                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Client-Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Featured Card 2 -->
+                <a href="#campaign-setup" class="group block">
+                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-purple-500 transform hover:-translate-y-1">
+                        <div class="bg-gradient-to-r from-purple-500 to-pink-600 p-6">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                    <span class="text-4xl">⚙️</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-1">Campaign Setup Reports</h3>
+                                    <p class="text-purple-100">Build campaigns right</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-600 mb-4">Campaign architecture diagrams, keyword mapping, creative asset reports, and landing page review templates.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">4 Templates</span>
+                                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Visual</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- All Resources Grid -->
+        <section>
+            <div class="flex items-center gap-3 mb-8">
+                <span class="text-4xl">📂</span>
+                <h2 class="text-3xl font-bold text-gray-900">All Resources</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <!-- Resource Card 1 -->
+                <a href="#reporting" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-green-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-green-100 rounded-lg p-3">
+                                <span class="text-3xl">📊</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Reporting & Optimization</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Weekly summaries, monthly reports, executive dashboards, and A/B test results templates.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-green-600">8 Reports</span>
+                            <svg class="w-5 h-5 text-green-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resource Card 2 -->
+                <a href="#questionnaire" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-yellow-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-yellow-100 rounded-lg p-3">
+                                <span class="text-3xl">📝</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Discovery Questionnaire</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">30 strategic questions to ask during your first client call. Covers goals, audience, and operations.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-yellow-600">30 Questions</span>
+                            <svg class="w-5 h-5 text-yellow-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resource Card 3 -->
+                <a href="/audit-checklist.html" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-red-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-red-100 rounded-lg p-3">
+                                <span class="text-3xl">✅</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Account Audit Checklist</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Complete checklist for auditing Google Ads accounts. Track structure, conversions, and wasted spend.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-red-600">Full Audit</span>
+                            <svg class="w-5 h-5 text-red-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resource Card 4 -->
+                <a href="#keyword-research" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-indigo-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-indigo-100 rounded-lg p-3">
+                                <span class="text-3xl">🔍</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Keyword Research Template</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Organize keywords by intent level, match type strategy, and search volume. Intent mapping included.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-indigo-600">Spreadsheet</span>
+                            <svg class="w-5 h-5 text-indigo-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resource Card 5 -->
+                <a href="#competitor-analysis" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-orange-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-orange-100 rounded-lg p-3">
+                                <span class="text-3xl">🎯</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Competitor Analysis</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Framework for analyzing competitor ads, keywords, landing pages, and offer positioning.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-orange-600">Framework</span>
+                            <svg class="w-5 h-5 text-orange-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resource Card 6 -->
+                <a href="#roi-calculator" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-teal-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-teal-100 rounded-lg p-3">
+                                <span class="text-3xl">💰</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">ROI Calculator</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Calculate target ROAS, acceptable CPA, and budget requirements based on profit margins.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-teal-600">Calculator</span>
+                            <svg class="w-5 h-5 text-teal-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resource Card 7 -->
+                <a href="#creative-swipe" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-pink-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-pink-100 rounded-lg p-3">
+                                <span class="text-3xl">🎨</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Creative Swipe File</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Collection of high-performing ad copy formulas, headlines, and CTAs across industries.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-pink-600">100+ Examples</span>
+                            <svg class="w-5 h-5 text-pink-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resource Card 8 -->
+                <a href="#tracking-setup" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-cyan-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-cyan-100 rounded-lg p-3">
+                                <span class="text-3xl">🔧</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Tracking Setup Guide</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Step-by-step guide for GA4, GTM, conversion tracking, and enhanced conversions setup.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-cyan-600">Step-by-Step</span>
+                            <svg class="w-5 h-5 text-cyan-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resource Card 9 -->
+                <a href="#budget-planner" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-emerald-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-emerald-100 rounded-lg p-3">
+                                <span class="text-3xl">📈</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Budget Planner</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Plan budget allocation across campaigns, forecast results, and track spend vs. performance.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-emerald-600">Planner</span>
+                            <svg class="w-5 h-5 text-emerald-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resource Card 10 -->
+                <a href="#performance-benchmarks" class="group block">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border-2 border-transparent hover:border-violet-400 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-violet-100 rounded-lg p-3">
+                                <span class="text-3xl">📉</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Industry Benchmarks</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Average CTR, conversion rates, and CPC by industry to benchmark your performance.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-violet-600">25+ Industries</span>
+                            <svg class="w-5 h-5 text-violet-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="mt-16">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-2xl p-12 text-center text-white">
+                <div class="float-animation inline-block mb-6">
+                    <span class="text-6xl">🎁</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-4">Need Help Getting Started?</h2>
+                <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                    Schedule a free strategy call and we'll walk you through these resources and how to apply them to your business.
+                </p>
+                <button class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg">
+                    Book Your Free Call →
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <p class="text-gray-400 mb-2">© 2025 ppclicks. All rights reserved.</p>
+                <p class="text-gray-500 text-sm">Built for agencies and marketers who want to scale faster.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

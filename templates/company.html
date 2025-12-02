@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-gradient text-white py-32 text-center">
+  <div class="max-w-4xl mx-auto px-4">
+    <h1 class="text-5xl font-bold mb-6">PPClicks – Your Google Ads Partner</h1>
+    <p class="text-xl mb-8">We help local businesses turn ad spend into measurable growth with expert Google Ads management.</p>
+    <a href="#services" class="btn-primary px-6 py-3 rounded-lg text-lg font-semibold">See Our Services</a>
+  </div>
+</section>
+
+<section id="services" class="max-w-7xl mx-auto px-4 py-16">
+  <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Our Services</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+      <div class="text-4xl mb-4">🎯</div>
+      <h3 class="text-2xl font-semibold mb-2 text-gray-800">Search Ads</h3>
+      <p class="text-gray-600">Target high-intent customers with campaigns that convert and generate measurable ROI.</p>
+    </div>
+    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+      <div class="text-4xl mb-4">📊</div>
+      <h3 class="text-2xl font-semibold mb-2 text-gray-800">Remarketing</h3>
+      <p class="text-gray-600">Re-engage previous website visitors and increase conversion rate with strategic ad campaigns.</p>
+    </div>
+    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+      <div class="text-4xl mb-4">💻</div>
+      <h3 class="text-2xl font-semibold mb-2 text-gray-800">Landing Pages</h3>
+      <p class="text-gray-600">Custom landing pages optimized for conversions to maximize ad spend effectiveness.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="bg-gray-50 py-16">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-6 text-gray-800">About PPClicks</h2>
+    <p class="text-gray-600 text-lg">PPClicks is a certified Google Ads agency focused on helping small and medium businesses achieve measurable growth through data-driven campaigns, tailored strategies, and hands-on support.</p>
+  </div>
+</section>
+{% endblock content %}

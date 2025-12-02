@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Ads Onboarding & Strategy Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .page {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            border-bottom: 4px solid #4285f4;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #1a73e8;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: space-between;
+            color: #5f6368;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            page-break-inside: avoid;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+            color: white;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header .number {
+            background: rgba(255,255,255,0.2);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .section-header h2 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .subsection {
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 3px solid #e8eaed;
+        }
+
+        .subsection h3 {
+            color: #1a73e8;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .content-box {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4285f4;
+        }
+
+        .content-box h4 {
+            color: #202124;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            color: #5f6368;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e8eaed;
+        }
+
+        .info-item label {
+            display: block;
+            font-weight: 600;
+            color: #5f6368;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .info-item .value {
+            color: #202124;
+            font-size: 16px;
+        }
+
+        .metric-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #dadce0;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #dadce0;
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-weight: 600;
+            color: #5f6368;
+        }
+
+        .metric-value {
+            color: #1a73e8;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .checklist li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid #e8eaed;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #34a853;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin-top: 20px;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #e8eaed;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e8eaed;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 20px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #4285f4;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #e8eaed;
+        }
+
+        .timeline-item .phase {
+            font-weight: 700;
+            color: #1a73e8;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .description {
+            color: #5f6368;
+            font-size: 14px;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border-left-color: #34a853;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border-left-color: #1a73e8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+
+        th {
+            background: #1a73e8;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e8eaed;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 2px solid #e8eaed;
+            text-align: center;
+            color: #5f6368;
+            font-size: 12px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <h1>Google Ads Onboarding & Strategy Report</h1>
+            <p style="font-size: 16px; color: #5f6368; margin-top: 10px;">Comprehensive Analysis & 90-Day Implementation Plan</p>
+            <div class="meta">
+                <div><strong>Client:</strong> [Client Name]</div>
+                <div><strong>Date:</strong> [Report Date]</div>
+                <div><strong>Prepared By:</strong> [Your Agency]</div>
+            </div>
+        </div>
+
+        <!-- Section 1: Discovery Questionnaire -->
+        <div class="section">
+            <div class="section-header">
+                <div class="number">1</div>
+                <h2>Discovery Questionnaire Summary</h2>
+            </div>
+
+            <div class="subsection">
+                <h3>Business Overview</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Industry</label>
+                        <div class="value">[Industry/Vertical]</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Business Model</label>
+                        <div class="value">[B2B/B2C/D2C]</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Average Order Value</label>
+                        <div class="value">$[AOV]</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Target ROAS</label>
+                        <div class="value">[X]:1</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Primary Business Goals</h3>
+                <div class="content-box">
+                    <p>[Summary of primary goals: lead generation, e-commerce sales, brand awareness, etc.]</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Target Audience Insights</h3>
+                <div class="content-box">
+                    <h4>Demographics</h4>
+                    <p>[Age range, location, income level, job titles, etc.]</p>
+                </div>
+                <div class="content-box">
+                    <h4>Psychographics</h4>
+                    <p>[Pain points, motivations, buying triggers, decision-making process]</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Historical Campaign Learnings</h3>
+                <div class="content-box">
+                    <h4>What Worked</h4>
+                    <p>[Previous successful strategies, messaging, channels]</p>
+                </div>
+                <div class="content-box">
+                    <h4>What Didn't Work</h4>
+                    <p>[Failed approaches, lessons learned, challenges faced]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Audit Report -->
+        <div class="section">
+            <div class="section-header">
+                <div class="number">2</div>
+                <h2>Google Ads Account Audit</h2>
+            </div>
+
+            <div class="subsection">
+                <h3>Account Structure Review</h3>
+                <div class="metric-box">
+                    <div class="metric-row">
+                        <span class="metric-label">Total Campaigns</span>
+                        <span class="metric-value">[X]</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Active Ad Groups</span>
+                        <span class="metric-value">[X]</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Keywords</span>
+                        <span class="metric-value">[X]</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Structure Score</span>
+                        <span class="metric-value">[X]/10</span>
+                    </div>
+                </div>
+                <div class="alert">
+                    <strong>Key Finding:</strong> [Summary of structural issues or strengths]
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Tracking & Conversion Integrity</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tracking Element</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Conversion Tracking</td>
+                            <td>[Active/Missing/Incomplete]</td>
+                            <td>[High/Medium/Low]</td>
+                        </tr>
+                        <tr>
+                            <td>Enhanced Conversions</td>
+                            <td>[Active/Missing/Incomplete]</td>
+                            <td>[High/Medium/Low]</td>
+                        </tr>
+                        <tr>
+                            <td>GA4 Integration</td>
+                            <td>[Active/Missing/Incomplete]</td>
+                            <td>[High/Medium/Low]</td>
+                        </tr>
+                        <tr>
+                            <td>Auto-Tagging</td>
+                            <td>[Active/Missing/Incomplete]</td>
+                            <td>[High/Medium/Low]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="subsection">
+                <h3>Wasted Spend Analysis</h3>
+                <div class="content-box">
+                    <h4>Total Wasted Spend (Last 30 Days)</h4>
+                    <p style="font-size: 24px; font-weight: 700; color: #ea4335; margin: 10px 0;">$[Amount] ([X]% of total spend)</p>
+                    <p><strong>Primary Sources:</strong></p>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>[Irrelevant search queries - $X]</li>
+                        <li>[Low-performing placements - $X]</li>
+                        <li>[Broad match without proper negatives - $X]</li>
+                        <li>[Poor landing page relevance - $X]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Query-Level Intent Analysis</h3>
+                <div class="content-box">
+                    <h4>High Intent Queries (Strong Purchase/Lead Intent)</h4>
+                    <p>[Examples of queries with high conversion intent that need more investment]</p>
+                </div>
+                <div class="content-box">
+                    <h4>Low Intent Queries (Informational/Research)</h4>
+                    <p>[Examples of queries with low commercial intent that should be excluded or bid lower]</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Creative Relevance Score</h3>
+                <div class="metric-box">
+                    <div class="metric-row">
+                        <span class="metric-label">Ad Relevance</span>
+                        <span class="metric-value">[Above Average/Average/Below Average]</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Expected CTR</span>
+                        <span class="metric-value">[Above Average/Average/Below Average]</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Landing Page Experience</span>
+                        <span class="metric-value">[Above Average/Average/Below Average]</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Actionable Fixes - Priority List</h3>
+                <ul class="checklist">
+                    <li>[Fix 1: Description and impact]</li>
+                    <li>[Fix 2: Description and impact]</li>
+                    <li>[Fix 3: Description and impact]</li>
+                    <li>[Fix 4: Description and impact]</li>
+                    <li>[Fix 5: Description and impact]</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 3: Competitor Landscape -->
+        <div class="section">
+            <div class="section-header">
+                <div class="number">3</div>
+                <h2>Competitor Landscape Report</h2>
+            </div>
+
+            <div class="subsection">
+                <h3>Competitive Overview</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Competitor</th>
+                            <th>Ad Presence</th>
+                            <th>Key Differentiator</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[Competitor 1]</td>
+                            <td>[High/Medium/Low]</td>
+                            <td>[Their main selling point]</td>
+                        </tr>
+                        <tr>
+                            <td>[Competitor 2]</td>
+                            <td>[High/Medium/Low]</td>
+                            <td>[Their main selling point]</td>
+                        </tr>
+                        <tr>
+                            <td>[Competitor 3]</td>
+                            <td>[High/Medium/Low]</td>
+                            <td>[Their main selling point]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="subsection">
+                <h3>Ad Copy Teardown</h3>
+                <div class="content-box">
+                    <h4>Common Messaging Themes</h4>
+                    <p>[Analysis of competitor ad copy patterns, hooks, and CTAs]</p>
+                </div>
+                <div class="content-box">
+                    <h4>White Space Opportunities</h4>
+                    <p>[Unique angles competitors aren't using that we can leverage]</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Keyword Gap Analysis</h3>
+                <div class="content-box">
+                    <h4>Keywords Competitors Rank For (That You Don't)</h4>
+                    <p>[List of high-value keywords with search volume and estimated CPC]</p>
+                </div>
+                <div class="content-box">
+                    <h4>Your Unique Keyword Opportunities</h4>
+                    <p>[Keywords you can own based on your unique value proposition]</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Offer Positioning Analysis</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Your Business</th>
+                            <th>Competitors</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pricing Strategy</td>
+                            <td>[Your approach]</td>
+                            <td>[Their approach]</td>
+                        </tr>
+                        <tr>
+                            <td>Primary Offer</td>
+                            <td>[Your offer]</td>
+                            <td>[Their offers]</td>
+                        </tr>
+                        <tr>
+                            <td>USP</td>
+                            <td>[Your USP]</td>
+                            <td>[Their USPs]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="subsection">
+                <h3>Landing Page Comparison</h3>
+                <div class="content-box">
+                    <h4>What Competitors Do Better</h4>
+                    <p>[Elements we can learn from: social proof, urgency, simplicity, etc.]</p>
+                </div>
+                <div class="content-box">
+                    <h4>Your Competitive Advantages</h4>
+                    <p>[Where your landing pages/offers outperform competitors]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: 90-Day Strategy Blueprint -->
+        <div class="section">
+            <div class="section-header">
+                <div class="number">4</div>
+                <h2>90-Day Strategy Blueprint</h2>
+            </div>
+
+            <div class="subsection">
+                <h3>North-Star KPIs</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Primary KPI</label>
+                        <div class="value">[e.g., ROAS 4:1]</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Secondary KPI</label>
+                        <div class="value">[e.g., CPA $50]</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Volume Target</label>
+                        <div class="value">[X conversions/month]</div>
+                    </div>
+                    <div class="info-item">
+                        <label>Quality Score Target</label>
+                        <div class="value">[7+]</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>90-Day Roadmap</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="phase">Days 1-30: Foundation & Quick Wins</div>
+                        <div class="description">
+                            • Fix tracking infrastructure<br>
+                            • Add negative keywords from audit<br>
+                            • Optimize account structure<br>
+                            • Launch high-intent search campaigns<br>
+                            • A/B test top 3 ad variations
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Days 31-60: Scaling & Testing</div>
+                        <div class="description">
+                            • Scale winning campaigns<br>
+                            • Launch Performance Max campaigns<br>
+                            • Implement audience layering<br>
+                            • Test landing page variations<br>
+                            • Expand keyword coverage
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Days 61-90: Optimization & Expansion</div>
+                        <div class="description">
+                            • Full account optimization based on data<br>
+                            • Launch remarketing campaigns<br>
+                            • Implement advanced bidding strategies<br>
+                            • Test new campaign types<br>
+                            • Quarterly performance review
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Testing Timeline</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Test Type</th>
+                            <th>Hypothesis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Week 1-2</td>
+                            <td>Ad Copy</td>
+                            <td>[Benefit-focused vs. feature-focused messaging]</td>
+                        </tr>
+                        <tr>
+                            <td>Week 3-4</td>
+                            <td>Landing Page</td>
+                            <td>[Long-form vs. short-form landing page]</td>
+                        </tr>
+                        <tr>
+                            <td>Week 5-6</td>
+                            <td>Audience</td>
+                            <td>[In-market vs. custom intent audiences]</td>
+                        </tr>
+                        <tr>
+                            <td>Week 7-8</td>
+                            <td>Bidding</td>
+                            <td>[Target CPA vs. Maximize Conversions]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="subsection">
+                <h3>Budget Allocation Strategy</h3>
+                <div class="metric-box">
+                    <div class="metric-row">
+                        <span class="metric-label">Search Campaigns</span>
+                        <span class="metric-value">[X]%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Performance Max</span>
+                        <span class="metric-value">[X]%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Display/Remarketing</span>
+                        <span class="metric-value">[X]%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Testing Budget</span>
+                        <span class="metric-value">[X]%</span>
+                    </div>
+                </div>
+                <div class="alert alert-info">
+                    <strong>Note:</strong> Budget allocation will be adjusted based on performance data after the first 30 days.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Tracking Implementation -->
+        <div class="section">
+            <div class="section-header">
+                <div class="number">5</div>
+                <h2>Tracking & Measurement Implementation</h2>
+            </div>
+
+            <div class="subsection">
+                <h3>Conversion Tracking Setup</h3>
+                <ul class="checklist">
+                    <li>Install Google Ads conversion tracking tag on thank-you page</li>
+                    <li>Set up conversion actions for each goal (purchase, lead, sign-up)</li>
+                    <li>Configure conversion values based on actual revenue/lead value</li>
+                    <li>Test conversion tracking in preview mode</li>
+                    <li>Verify conversions are recording correctly</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>Enhanced Conversions Implementation</h3>
+                <div class="content-box">
+                    <h4>Implementation Method</h4>
+                    <p>[Google Tag Manager / Global Site Tag / Google Ads API]</p>
+                </div>
+                <ul class="checklist">
+                    <li>Hash customer data (email, phone, address)</li>
+                    <li>Pass hashed data to Google Ads</li>
+                    <li>Enable enhanced conversions in Google Ads</li>
+                    <li>Test and validate data transmission</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>GA4 Integration Mapping</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Google Ads Event</th>
+                            <th>GA4 Event</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Purchase</td>
+                            <td>purchase</td>
+                            <td>[To Do/In Progress/Complete]</td>
+                        </tr>
+                        <tr>
+                            <td>Lead Submission</td>
+                            <td>generate_lead</td>
+                            <td>[To Do/In Progress/Complete]</td>
+                        </tr>
+                        <tr>
+                            <td>Add to Cart</td>
+                            <td>add_to_cart</td>
+                            <td>[To Do/In Progress/Complete]</td>
+                        </tr>
+                        <tr>
+                            <td>Page View</td>
+                            <td>page_view</td>
+                            <td>[To Do/In Progress/Complete]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="subsection">
+                <h3>Custom Events Setup</h3>
+                <div class="content-box">
+                    <h4>Micro-Conversions to Track</h4>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>[e.g., Video watch 50%]</li>
+                        <li>[e.g., Time on site > 3 minutes]</li>
+                        <li>[e.g., Product page visits]</li>
+                        <li>[e.g., Calculator/tool usage]</li>
+                        <li>[e.g., PDF downloads]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Google Tag Manager Setup Plan</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="phase">Step 1: Container Setup</div>
+                        <div class="description">Install GTM container on all pages of the website</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Step 2: Tag Configuration</div>
+                        <div class="description">Configure Google Ads, GA4, and conversion tracking tags</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Step 3: Trigger Setup</div>
+                        <div class="description">Set up triggers for all conversion events and custom events</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Step 4: Testing & QA</div>
+                        <div class="description">Test all tags in preview mode and verify data flow</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Step 5: Publish & Monitor</div>
+                        <div class="description">Publish container and monitor for 48 hours to ensure accuracy</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>Success Criteria:</strong> All conversion tracking must show 100% accuracy for 7 consecutive days before scaling ad spend.
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Questions or feedback?</strong> Contact us at [email@agency.com] | [phone number]</p>
+            <p style="margin-top: 10px;">© 2024 [Your Agency Name]. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

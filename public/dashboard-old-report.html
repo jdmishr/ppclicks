@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Google Ads Campaign Performance — Client Report</title>
+  <!-- Tailwind CDN (for quick prototypes) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* small helpers */
+    .card { @apply bg-white shadow rounded-lg p-4; }
+    .muted { @apply text-sm text-gray-500; }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800 antialiased">
+  <div class="max-w-6xl mx-auto p-6">
+    <!-- Header -->
+    <header class="flex items-start justify-between gap-4 mb-6">
+      <div>
+        <h1 class="text-2xl font-semibold">Google Ads — Campaign Performance</h1>
+        <p class="muted">Clean, shareable report you can hand to clients. Replace sample data with real metrics.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="text-right">
+          <div class="text-xs muted">Report date</div>
+          <div id="reportDate" class="font-medium">—</div>
+        </div>
+        <button id="exportPdfBtn" class="px-3 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">Print / Save PDF</button>
+      </div>
+    </header>
+
+    <!-- Controls -->
+    <div class="card mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        <label class="muted">Date range</label>
+        <input id="startDate" type="date" class="border rounded px-2 py-1" />
+        <input id="endDate" type="date" class="border rounded px-2 py-1" />
+
+        <label class="muted">Platform</label>
+        <select id="platformSelect" class="border rounded px-2 py-1">
+          <option value="all">All</option>
+          <option value="search">Search</option>
+          <option value="display">Display</option>
+          <option value="youtube">YouTube</option>
+        </select>
+
+        <label class="muted">Campaign</label>
+        <select id="campaignSelect" class="border rounded px-2 py-1">
+          <option value="all">All campaigns</option>
+        </select>
+
+        <button id="applyBtn" class="ml-auto px-3 py-2 bg-green-600 text-white rounded hover:bg-green-700">Apply</button>
+      </div>
+    </div>
+
+    <!-- KPI cards -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+      <div class="card">
+        <div class="muted">Impressions</div>
+        <div id="kpiImpr" class="text-2xl font-semibold">—</div>
+      </div>
+      <div class="card">
+        <div class="muted">Clicks</div>
+        <div id="kpiClicks" class="text-2xl font-semibold">—</div>
+      </div>
+      <div class="card">
+        <div class="muted">Conversions</div>
+        <div id="kpiConv" class="text-2xl font-semibold">—</div>
+      </div>
+      <div class="card">
+        <div class="muted">Cost / conv</div>
+        <div id="kpiCpc" class="text-2xl font-semibold">—</div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <div class="card">
+        <h3 class="font-medium mb-2">Performance over time</h3>
+        <canvas id="lineChart" height="160"></canvas>
+      </div>
+      <div class="card">
+        <h3 class="font-medium mb-2">Traffic share by channel</h3>
+        <canvas id="pieChart" height="160"></canvas>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card mb-6">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-medium">Campaign breakdown</h3>
+        <div class="muted">Rows: <span id="tableCount">0</span></div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-left">
+          <thead class="text-xs text-gray-600">
+            <tr>
+              <th class="p-2">Campaign</th>
+              <th class="p-2">Impressions</th>
+              <th class="p-2">Clicks</th>
+              <th class="p-2">CTR</th>
+              <th class="p-2">Cost</th>
+              <th class="p-2">Conversions</th>
+              <th class="p-2">Cost / conv</th>
+            </tr>
+          </thead>
+          <tbody id="campaignTable">
+            <!-- rows inserted by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer class="text-sm text-gray-600 muted">
+      Generated with client-friendly template — replace sampleData in the JS with real export or connect to your API.
+    </footer>
+  </div>
+
+  <script>
+    /* --------------------
+       SAMPLE DATA (replace with actual export)
+       Each row represents a daily snapshot for a campaign.
+       Fields: date (YYYY-MM-DD), campaign, platform, impressions, clicks, cost (USD cents), conversions
+       -------------------- */
+    const sampleData = [
+      {date: '2025-11-01', campaign: 'Brand - Search', platform: 'search', impressions: 12000, clicks: 240, cost: 120000, conversions: 24},
+      {date: '2025-11-02', campaign: 'Brand - Search', platform: 'search', impressions: 15000, clicks: 300, cost: 150000, conversions: 30},
+      {date: '2025-11-01', campaign: 'Prospecting - Display', platform: 'display', impressions: 30000, clicks: 150, cost: 60000, conversions: 3},
+      {date: '2025-11-02', campaign: 'Prospecting - Display', platform: 'display', impressions: 25000, clicks: 125, cost: 50000, conversions: 2},
+      {date: '2025-11-01', campaign: 'YouTube - Awareness', platform: 'youtube', impressions: 50000, clicks: 500, cost: 200000, conversions: 5},
+      {date: '2025-11-02', campaign: 'YouTube - Awareness', platform: 'youtube', impressions: 52000, clicks: 520, cost: 208000, conversions: 6}
+    ];
+
+    /* Utilities */
+    const formatMoney = (cents) => {
+      return (cents / 100).toLocaleString(undefined, {style: 'currency', currency: 'USD'});
+    };
+    const formatPct = (num, denom) => denom === 0 ? '—' : ((num/denom)*100).toFixed(2) + '%';
+
+    /* DOM refs */
+    const campaignSelect = document.getElementById('campaignSelect');
+    const platformSelect = document.getElementById('platformSelect');
+    const startDate = document.getElementById('startDate');
+    const endDate = document.getElementById('endDate');
+    const applyBtn = document.getElementById('applyBtn');
+    const reportDate = document.getElementById('reportDate');
+    const exportPdfBtn = document.getElementById('exportPdfBtn');
+
+    // KPIs
+    const kpiImpr = document.getElementById('kpiImpr');
+    const kpiClicks = document.getElementById('kpiClicks');
+    const kpiConv = document.getElementById('kpiConv');
+    const kpiCpc = document.getElementById('kpiCpc');
+
+    const campaignTable = document.getElementById('campaignTable');
+    const tableCount = document.getElementById('tableCount');
+
+    // Charts
+    let lineChart, pieChart;
+    const ctxLine = document.getElementById('lineChart').getContext('2d');
+    const ctxPie = document.getElementById('pieChart').getContext('2d');
+
+    function init() {
+      // populate campaign select
+      const campaigns = [...new Set(sampleData.map(r=>r.campaign))];
+      campaigns.forEach(c => {
+        const opt = document.createElement('option'); opt.value = c; opt.textContent = c; campaignSelect.appendChild(opt);
+      });
+
+      // default dates (auto from sample)
+      const dates = sampleData.map(d => d.date).sort();
+      if (dates.length) {
+        startDate.value = dates[0];
+        endDate.value = dates[dates.length-1];
+      }
+
+      reportDate.textContent = new Date().toLocaleString();
+
+      // build charts
+      lineChart = new Chart(ctxLine, {
+        type: 'line',
+        data: { labels: [], datasets: [{label:'Clicks', data:[], tension:0.3, fill:false}, {label:'Conversions', data:[], tension:0.3, fill:false}]},
+        options: { responsive:true, plugins:{legend:{position:'top'}}}
+      });
+
+      pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: { labels: [], datasets: [{ data: [] }]},
+        options: { responsive:true }
+      });
+
+      applyFilters();
+    }
+
+    function filterData() {
+      const s = startDate.value || '0000-01-01';
+      const e = endDate.value || '9999-12-31';
+      const platform = platformSelect.value;
+      const campaign = campaignSelect.value;
+
+      return sampleData.filter(r => {
+        if (platform !== 'all' && r.platform !== platform) return false;
+        if (campaign !== 'all' && r.campaign !== campaign) return false;
+        return r.date >= s && r.date <= e;
+      });
+    }
+
+    function aggregateByDate(rows) {
+      const map = {};
+      rows.forEach(r=>{
+        if (!map[r.date]) map[r.date] = {impr:0, clicks:0, conv:0, cost:0};
+        map[r.date].impr += r.impressions;
+        map[r.date].clicks += r.clicks;
+        map[r.date].conv += r.conversions;
+        map[r.date].cost += r.cost;
+      });
+      const dates = Object.keys(map).sort();
+      return dates.map(d => ({date:d, ...map[d]}));
+    }
+
+    function applyFilters() {
+      const rows = filterData();
+
+      // KPIs
+      const totals = rows.reduce((acc,r)=>{
+        acc.impr += r.impressions; acc.clicks += r.clicks; acc.conv += r.conversions; acc.cost += r.cost; return acc;
+      }, {impr:0, clicks:0, conv:0, cost:0});
+
+      kpiImpr.textContent = totals.impr.toLocaleString();
+      kpiClicks.textContent = totals.clicks.toLocaleString();
+      kpiConv.textContent = totals.conv.toLocaleString();
+      kpiCpc.textContent = totals.conv === 0 ? '—' : formatMoney(Math.round(totals.cost / Math.max(1, totals.conv)));
+
+      // Line chart (clicks + conversions over time)
+      const ag = aggregateByDate(rows);
+      const labels = ag.map(a=>a.date);
+      const clicksData = ag.map(a=>a.clicks);
+      const convData = ag.map(a=>a.conv);
+
+      lineChart.data.labels = labels;
+      lineChart.data.datasets[0].data = clicksData;
+      lineChart.data.datasets[1].data = convData;
+      lineChart.update();
+
+      // Pie chart by platform (impressions)
+      const byPlatform = rows.reduce((m,r)=>{ m[r.platform] = (m[r.platform]||0) + r.impressions; return m; }, {});
+      pieChart.data.labels = Object.keys(byPlatform);
+      pieChart.data.datasets[0].data = Object.values(byPlatform);
+      pieChart.update();
+
+      // Table — aggregate by campaign
+      const byCampaign = {};
+      rows.forEach(r => {
+        if (!byCampaign[r.campaign]) byCampaign[r.campaign] = {impr:0, clicks:0, conv:0, cost:0};
+        byCampaign[r.campaign].impr += r.impressions;
+        byCampaign[r.campaign].clicks += r.clicks;
+        byCampaign[r.campaign].conv += r.conversions;
+        byCampaign[r.campaign].cost += r.cost;
+      });
+
+      campaignTable.innerHTML = '';
+      const campaigns = Object.keys(byCampaign).sort();
+      campaigns.forEach(c => {
+        const d = byCampaign[c];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="p-2 font-medium">${c}</td>
+          <td class="p-2">${d.impr.toLocaleString()}</td>
+          <td class="p-2">${d.clicks.toLocaleString()}</td>
+          <td class="p-2">${formatPct(d.clicks, d.impr)}</td>
+          <td class="p-2">${formatMoney(d.cost)}</td>
+          <td class="p-2">${d.conv.toLocaleString()}</td>
+          <td class="p-2">${d.conv === 0 ? '—' : formatMoney(Math.round(d.cost / d.conv))}</td>
+        `;
+        campaignTable.appendChild(tr);
+      });
+
+      tableCount.textContent = campaigns.length;
+    }
+
+    // Export / Print
+    exportPdfBtn.addEventListener('click', ()=> window.print());
+
+    applyBtn.addEventListener('click', applyFilters);
+
+    // Init on load
+    window.addEventListener('DOMContentLoaded', init);
+
+    /* ----------- HOW TO use with real data -----------
+      - Replace `sampleData` with a JSON export from your reporting tool (Google Ads, BigQuery, Data Studio JSON, etc.)
+      - Ensure the fields match: date, campaign, platform, impressions, clicks, cost, conversions
+      - Or add a small uploader that accepts CSV and parses it using PapaParse if you prefer client-side file import.
+      - For server-side integration, fetch data from your API and call applyFilters() after setting `sampleData`.
+    */
+  </script>
+</body>
+</html>

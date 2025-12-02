@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Google Ads — Client Documents Pack</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card { @apply bg-white shadow rounded-lg p-6; }
+    .muted { @apply text-sm text-gray-500; }
+    .section-title { @apply text-xl font-semibold mb-2; }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-900 antialiased">
+  <div class="max-w-6xl mx-auto p-6">
+    <header class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-2xl font-bold">Google Ads — Client Documents Pack</h1>
+        <p class="muted">Five client-ready templates: Discovery, Audit, Competitor Landscape, 90-day Strategy, and Tracking Plan.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="printBtn" class="px-3 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">Print / Save PDF</button>
+      </div>
+    </header>
+
+    <nav class="mb-6">
+      <div class="flex flex-wrap gap-3">
+        <a href="#discovery" class="px-3 py-2 bg-white border rounded hover:shadow">1. Discovery Questionnaire</a>
+        <a href="#audit" class="px-3 py-2 bg-white border rounded hover:shadow">2. Audit Report</a>
+        <a href="#competitor" class="px-3 py-2 bg-white border rounded hover:shadow">3. Competitor Landscape</a>
+        <a href="#strategy" class="px-3 py-2 bg-white border rounded hover:shadow">4. 90-Day Strategy</a>
+        <a href="#tracking" class="px-3 py-2 bg-white border rounded hover:shadow">5. Tracking Plan</a>
+      </div>
+    </nav>
+
+    <!-- 1. Discovery -->
+    <section id="discovery" class="card mb-6">
+      <div class="section-title">1. Google Ads — Discovery Questionnaire</div>
+      <p class="muted mb-4">Use this to capture objectives, audiences, KPIs, constraints, and prior learnings.</p>
+      <form id="discoveryForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium">Company name</label>
+          <input name="company" class="w-full border rounded px-3 py-2" placeholder="Acme Co" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Primary contact</label>
+          <input name="contact" class="w-full border rounded px-3 py-2" placeholder="Name, email" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Business goals (top 3)</label>
+          <textarea name="goals" class="w-full border rounded px-3 py-2" rows="3" placeholder="e.g., increase online sales 30% YoY"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">North-star KPI</label>
+          <input name="northstar" class="w-full border rounded px-3 py-2" placeholder="e.g., Cost per Acquisition (CPA)" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Target audiences</label>
+          <input name="audience" class="w-full border rounded px-3 py-2" placeholder="demographics, interests, intent" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Average order value / margins</label>
+          <input name="aov" class="w-full border rounded px-3 py-2" placeholder="$150 / 35%" />
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium">Past campaign learnings (what worked, what didn't)</label>
+          <textarea name="learnings" class="w-full border rounded px-3 py-2" rows="4" placeholder="Summarize previous wins & issues"></textarea>
+        </div>
+
+        <div class="md:col-span-2 flex gap-2 justify-end">
+          <button type="button" id="saveDiscovery" class="px-4 py-2 bg-green-600 text-white rounded">Save</button>
+          <button type="reset" class="px-4 py-2 bg-gray-200 rounded">Clear</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 2. Audit -->
+    <section id="audit" class="card mb-6">
+      <div class="section-title">2. Google Ads — Audit Report</div>
+      <p class="muted mb-4">Run this checklist and fill findings + prioritized fixes.</p>
+
+      <div class="space-y-4">
+        <div>
+          <h4 class="font-medium">Account structure review</h4>
+          <p class="muted mb-2">Notes on campaigns, ad groups, match types, naming, and organization.</p>
+          <textarea id="auditStructure" class="w-full border rounded px-3 py-2" rows="3" placeholder="Findings & recommendations"></textarea>
+        </div>
+
+        <div>
+          <h4 class="font-medium">Tracking & conversion integrity</h4>
+          <p class="muted mb-2">Validate conversions, pixel firing, GA4 mapping, and test conversions.</p>
+          <textarea id="auditTracking" class="w-full border rounded px-3 py-2" rows="3" placeholder="e.g., missing conversion for lead form"></textarea>
+        </div>
+
+        <div>
+          <h4 class="font-medium">Wasted spend analysis</h4>
+          <p class="muted mb-2">Search terms, redundant keywords, low-converting audiences.</p>
+          <textarea id="auditWasted" class="w-full border rounded px-3 py-2" rows="3"></textarea>
+        </div>
+
+        <div>
+          <h4 class="font-medium">Query-level intent analysis</h4>
+          <p class="muted mb-2">Categorize search queries: transactional vs informational vs navigational.</p>
+          <textarea id="auditQuery" class="w-full border rounded px-3 py-2" rows="3"></textarea>
+        </div>
+
+        <div>
+          <h4 class="font-medium">Creative relevance score</h4>
+          <p class="muted mb-2">Rate ad relevance to intent (1-5) and list mismatches.</p>
+          <div class="flex gap-2 items-center">
+            <label class="muted">Score (1-5)</label>
+            <input id="creativeScore" type="number" min="1" max="5" class="w-20 border rounded px-3 py-2" />
+          </div>
+          <textarea id="auditCreative" class="w-full border rounded px-3 py-2 mt-2" rows="2"></textarea>
+        </div>
+
+        <div>
+          <h4 class="font-medium">Actionable fixes (priority)</h4>
+          <p class="muted mb-2">List quick wins, mid-term fixes, and long-term projects.</p>
+          <textarea id="auditFixes" class="w-full border rounded px-3 py-2" rows="4" placeholder="1) ... 2) ..."></textarea>
+        </div>
+
+        <div class="flex justify-end">
+          <button id="saveAudit" class="px-4 py-2 bg-green-600 text-white rounded">Save Audit</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Competitor -->
+    <section id="competitor" class="card mb-6">
+      <div class="section-title">3. Competitor Landscape Report</div>
+      <p class="muted mb-4">Capture competitor ads, keyword gaps, offers, and landing page differences.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium">Competitor list (top 5)</label>
+          <textarea id="compList" class="w-full border rounded px-3 py-2" rows="3" placeholder="Competitor A, Competitor B..."></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Ad copy teardown (notes)</label>
+          <textarea id="compAds" class="w-full border rounded px-3 py-2" rows="3" placeholder="headlines, CTAs, USP"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Keyword gap / opportunities</label>
+          <textarea id="compKeywords" class="w-full border rounded px-3 py-2" rows="3"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Offer positioning & differentiators</label>
+          <textarea id="compOffer" class="w-full border rounded px-3 py-2" rows="3"></textarea>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium">Landing page differences & CRO notes</label>
+          <textarea id="compLanding" class="w-full border rounded px-3 py-2" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="flex justify-end mt-4">
+        <button id="saveComp" class="px-4 py-2 bg-green-600 text-white rounded">Save Competitor Report</button>
+      </div>
+    </section>
+
+    <!-- 4. 90-Day Strategy -->
+    <section id="strategy" class="card mb-6">
+      <div class="section-title">4. 90-Day Google Ads Strategy Blueprint</div>
+      <p class="muted mb-4">High-level plan to hit your north-star KPI in 90 days.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium">North-star KPIs</label>
+          <input id="nsKpi" class="w-full border rounded px-3 py-2" placeholder="e.g., CPA < $50" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Budget allocation (monthly)</label>
+          <input id="budgetAlloc" class="w-full border rounded px-3 py-2" placeholder="$5,000 — Search 60% / Display 20% / YouTube 20%" />
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium">Optimization roadmap (weeks 1-12)</label>
+          <textarea id="roadmap" class="w-full border rounded px-3 py-2" rows="4" placeholder="Week 1-2: Setup, Week 3-4: Test..."></textarea>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium">Testing timeline (creative, landing pages, audiences)</label>
+          <textarea id="tests" class="w-full border rounded px-3 py-2" rows="3"></textarea>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium">Success criteria & decision rules</label>
+          <textarea id="criteria" class="w-full border rounded px-3 py-2" rows="3" placeholder="What qualifies as win, next steps if fail"></textarea>
+        </div>
+
+        <div class="md:col-span-2 flex justify-end">
+          <button id="saveStrategy" class="px-4 py-2 bg-green-600 text-white rounded">Save Strategy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Tracking -->
+    <section id="tracking" class="card mb-6">
+      <div class="section-title">5. Tracking & Measurement Implementation</div>
+      <p class="muted mb-4">Concrete plan for conversions, enhanced conversions, GA4 mapping and tag setup.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium">Primary conversions to track</label>
+          <input id="convList" class="w-full border rounded px-3 py-2" placeholder="Purchase, Lead form submit, Phone call" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Enhanced conversions (email/phone hashing)</label>
+          <select id="enhanced" class="w-full border rounded px-3 py-2">
+            <option value="no">No</option>
+            <option value="yes">Yes — plan to implement</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">GA4 mapping (event names & params)</label>
+          <textarea id="ga4map" class="w-full border rounded px-3 py-2" rows="3" placeholder="ga_event: purchase, params: value, currency"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium">Custom events & triggers</label>
+          <textarea id="customEvents" class="w-full border rounded px-3 py-2" rows="3" placeholder="e.g., add_to_cart, start_checkout"></textarea>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium">Tag Manager setup plan</label>
+          <textarea id="gtmPlan" class="w-full border rounded px-3 py-2" rows="4" placeholder="Containers, triggers, variables, naming"></textarea>
+        </div>
+
+        <div class="md:col-span-2 flex justify-end">
+          <button id="saveTracking" class="px-4 py-2 bg-green-600 text-white rounded">Save Tracking Plan</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="muted text-sm">Tip: Use the Save buttons to copy contents to the clipboard for pasting into Google Docs, Notion, or your CRM. Customize styling/colors to match your agency brand.</footer>
+  </div>
+
+  <script>
+    // Small helpers: Save sections to clipboard
+    function copySection(selector) {
+      const el = document.querySelector(selector);
+      if (!el) return;
+      const fields = Array.from(el.querySelectorAll('input, textarea, select'))
+        .map(inp => `${(inp.previousElementSibling && inp.previousElementSibling.innerText) || inp.name || inp.id}: ${inp.value || inp.textContent || inp.options?.[inp.selectedIndex]?.text || ''}`)
+        .join('\n');
+      navigator.clipboard.writeText(fields).then(()=> alert('Copied to clipboard — paste into Google Docs / Notion'));
+    }
+
+    document.getElementById('saveDiscovery').addEventListener('click', () => copySection('#discovery'));
+    document.getElementById('saveAudit').addEventListener('click', () => copySection('#audit'));
+    document.getElementById('saveComp').addEventListener('click', () => copySection('#competitor'));
+    document.getElementById('saveStrategy').addEventListener('click', () => copySection('#strategy'));
+    document.getElementById('saveTracking').addEventListener('click', () => copySection('#tracking'));
+
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>

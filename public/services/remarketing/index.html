@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPClicks – Google Ads Management That Prints Money</title>
+  <meta name="description" content="Expert Google Ads management for local businesses. Turn ad spend into measurable growth with our certified team. Get a free audit today!" />
+
+  <!-- Twind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/images/ppclicks.ico" />
+
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .btn-primary {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      transition: all .3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(16,185,129,.3);
+    }
+    .btn-secondary {
+      border: 2px solid #10b981;
+      color: #10b981;
+      transition: all .3s ease;
+    }
+    .btn-secondary:hover {
+      background: #10b981;
+      color: #fff;
+    }
+    .stat-number {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sticky-nav {
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.95);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all .6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Sticky Nav -->
+  <nav class="sticky top-0 z-50 sticky-nav border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="text-2xl font-bold text-gray-900">
+	  <a href="/">
+	    <img src="/images/ppclicks_logo.webp" width="130">
+	  </a>
+	</div>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="/#services" class="text-gray-700 hover:text-green-600">Services</a>
+          <a href="/#case-studies" class="text-gray-700 hover:text-green-600">Case Studies</a>
+          <a href="/#book-call" class="btn-primary text-white px-4 py-2 rounded-lg">Free Audit</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  
+<section class="w-full bg-gray-50 py-16">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <!-- Subtitle or intro if you add one -->
+    
+
+    <!-- Main Content -->
+    <article class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-blue-600">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition">
+                <div class="text-4xl font-bold text-blue-600 mb-2">385%</div>
+                <div class="text-gray-600">Average ROI Increase</div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition">
+                <div class="text-4xl font-bold text-green-600 mb-2">2.8x</div>
+                <div class="text-gray-600">Higher Conversion Rate</div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition">
+                <div class="text-4xl font-bold text-purple-600 mb-2">68%</div>
+                <div class="text-gray-600">Lower Cost Per Acquisition</div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition">
+                <div class="text-4xl font-bold text-orange-600 mb-2">$2.4M+</div>
+                <div class="text-gray-600">Revenue Generated</div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Real Results from Our Remarketing Campaigns</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- Conversion Rate Chart -->
+                <div class="bg-gray-50 rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Conversion Rate Improvement</h3>
+                    <canvas id="conversionChart"></canvas>
+                </div>
+                <!-- ROI Chart -->
+                <div class="bg-gray-50 rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Return on Ad Spend (ROAS)</h3>
+                    <canvas id="roiChart"></canvas>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Cost Per Conversion Chart -->
+                <div class="bg-gray-50 rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Cost Per Conversion Reduction</h3>
+                    <canvas id="costChart"></canvas>
+                </div>
+                <!-- Revenue Growth Chart -->
+                <div class="bg-gray-50 rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Monthly Revenue Growth</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Our Remarketing Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition">
+                <div class="text-4xl mb-4">🎯</div>
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">Dynamic Remarketing</h3>
+                <p class="text-gray-600 mb-4">Show personalized ads featuring the exact products or services visitors viewed on your site. Increase purchase intent with relevant, timely messaging.</p>
+                <div class="bg-blue-50 p-4 rounded">
+                    <div class="font-semibold text-blue-800">Average Results:</div>
+                    <div class="text-blue-600">+340% conversion rate</div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition">
+                <div class="text-4xl mb-4">📊</div>
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">Audience Segmentation</h3>
+                <p class="text-gray-600 mb-4">Create highly targeted campaigns based on user behavior, pages visited, cart abandonment, and engagement level for maximum relevance.</p>
+                <div class="bg-green-50 p-4 rounded">
+                    <div class="font-semibold text-green-800">Average Results:</div>
+                    <div class="text-green-600">-62% cost per click</div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition">
+                <div class="text-4xl mb-4">🔄</div>
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">Cross-Platform Remarketing</h3>
+                <p class="text-gray-600 mb-4">Reach your audience across Google Search, Display Network, YouTube, and Gmail with consistent messaging that drives action.</p>
+                <div class="bg-purple-50 p-4 rounded">
+                    <div class="font-semibold text-purple-800">Average Results:</div>
+                    <div class="text-purple-600">+215% reach expansion</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Success Story: E-commerce Client</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="bg-gray-700 bg-opacity-50 rounded-lg p-6">
+                    <div class="text-3xl font-bold text-blue-400 mb-2">Challenge</div>
+                    <p class="text-gray-300">High cart abandonment rate of 78% and only 1.2% conversion rate from initial visitors.</p>
+                </div>
+                <div class="bg-gray-700 bg-opacity-50 rounded-lg p-6">
+                    <div class="text-3xl font-bold text-green-400 mb-2">Solution</div>
+                    <p class="text-gray-300">Implemented segmented remarketing with dynamic product ads and sequential messaging strategy.</p>
+                </div>
+                <div class="bg-gray-700 bg-opacity-50 rounded-lg p-6">
+                    <div class="text-3xl font-bold text-yellow-400 mb-2">Results</div>
+                    <p class="text-gray-300">Recovered 43% of abandoned carts and achieved 4.8x ROAS within 90 days.</p>
+                </div>
+            </div>
+            <div class="bg-white text-gray-800 rounded-lg p-8 shadow-2xl">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-semibold mb-4">90-Day Performance Metrics</h3>
+                </div>
+                <canvas id="caseStudyChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Our Proven Remarketing Process</h2>
+        <div class="space-y-8">
+            <div class="flex items-start space-x-6">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">1</div>
+                <div class="flex-1 bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Audience Analysis & Pixel Implementation</h3>
+                    <p class="text-gray-600">We audit your tracking setup, implement advanced remarketing pixels, and analyze visitor behavior to identify high-value segments.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-6">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">2</div>
+                <div class="flex-1 bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Strategic Campaign Architecture</h3>
+                    <p class="text-gray-600">Build segmented campaigns targeting different visitor types with customized messaging and offers that drive conversions.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-6">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">3</div>
+                <div class="flex-1 bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Creative Development & Testing</h3>
+                    <p class="text-gray-600">Design compelling ad creatives with personalized messaging, then continuously test and optimize for maximum performance.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-6">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">4</div>
+                <div class="flex-1 bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Ongoing Optimization & Reporting</h3>
+                    <p class="text-gray-600">Monitor performance daily, adjust bidding strategies, refine audience segments, and provide transparent monthly reporting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script defer src="/js/chart_remarketing.js"></script>
+
+    </article>
+
+    <!-- CTA box -->
+    <div class="mt-16 p-8 bg-white shadow-md rounded-xl border border-gray-100">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-3">Ready to Scale Your Results?</h2>
+      <p class="text-gray-600 mb-6">
+        Book a free strategy call and let us audit your Google Ads account for opportunities.
+      </p>
+
+      <a href="https://calendly.com/rajatsharmatechy859/google-ads" 
+         class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+        Book a Free Strategy Call
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-4">PPClicks</h3>
+        <p class="text-gray-400 text-sm">Google Ads management that prints money for local businesses.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Services</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a class="hover:text-white" href="https://ppclicks.com/services/search-ads">Search Ads</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/services/local-services-ads">Local Services Ads</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/services/remarketing">Remarketing</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/services/landing-pages">Landing Pages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Company</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a class="hover:text-white" href="https://ppclicks.com/company">About</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/company/case-studies">Case Studies</a></li>
+          <li><a class="hover:text-white" href="/career">Careers</a></li>
+          <li><a class="hover:text-white" href="https://ppclicks.com/company/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Connect</h4>
+        <div class="flex space-x-4">
+          <a class="text-gray-400 hover:text-white" href="#"><i class="fab fa-linkedin"></i></a>
+          <a class="text-gray-400 hover:text-white" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="text-gray-400 hover:text-white" href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+      2025 PPClicks. All rights reserved. | <a class="hover:text-white" href="https://ppclicks.com/company/privacy-policy">Privacy Policy</a> | <a class="hover:text-white" href="https://ppclicks.com/company/terms-of-service">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        menu.classList.add('hidden'); // close mobile menu
+      });
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.target.classList.toggle('visible', entry.isIntersecting));
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form handler
+    document.getElementById('audit-form').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thanks! We’ll email your free audit within 24 hours.');
+      e.target.reset();
+    });
+  </script>
+  
+ <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Ads Performance Reports</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #202124; background: #f8f9fa; }
+        .page { max-width: 210mm; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); page-break-after: always; }
+        .header { border-bottom: 4px solid #34a853; padding-bottom: 20px; margin-bottom: 30px; }
+        .header h1 { color: #1a73e8; font-size: 28px; margin-bottom: 8px; }
+        .report-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px; }
+        .meta-item { background: #f8f9fa; padding: 10px; border-radius: 6px; }
+        .meta-item label { font-size: 11px; color: #5f6368; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 3px; }
+        .meta-item .value { font-size: 15px; color: #202124; font-weight: 600; }
+        
+        .report-header { background: linear-gradient(135deg, #34a853 0%, #0f9d58 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        .report-header h2 { font-size: 24px; margin-bottom: 5px; }
+        .report-header .subtitle { opacity: 0.9; font-size: 14px; }
+        
+        .action-card { background: white; border: 2px solid #e8eaed; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .action-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: #1a73e8; }
+        .action-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .action-number { background: #1a73e8; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
+        .action-title { font-size: 18px; font-weight: 700; color: #202124; }
+        .action-section { margin-bottom: 12px; }
+        .action-section label { display: block; font-weight: 600; color: #5f6368; font-size: 13px; text-transform: uppercase; margin-bottom: 5px; }
+        .action-section .content { color: #202124; font-size: 15px; line-height: 1.6; }
+        
+        .impact-badge { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-top: 5px; }
+        .impact-positive { background: #d4edda; color: #0f5132; }
+        .impact-neutral { background: #fff3cd; color: #997404; }
+        .impact-monitoring { background: #cfe2ff; color: #084298; }
+        
+        .next-steps { background: #f8f9fa; border-left: 4px solid #34a853; padding: 15px; border-radius: 6px; margin-top: 20px; }
+        .next-steps h3 { color: #34a853; font-size: 16px; margin-bottom: 10px; }
+        .next-steps ul { list-style: none; padding: 0; }
+        .next-steps li { padding: 8px 0; padding-left: 25px; position: relative; }
+        .next-steps li:before { content: "→"; position: absolute; left: 0; color: #34a853; font-weight: bold; }
+        
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 25px 0; }
+        .kpi-card { background: white; border: 2px solid #e8eaed; border-radius: 8px; padding: 20px; text-align: center; }
+        .kpi-card .label { font-size: 12px; color: #5f6368; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+        .kpi-card .value { font-size: 28px; font-weight: 700; color: #202124; margin-bottom: 5px; }
+        .kpi-card .change { font-size: 14px; font-weight: 600; }
+        .change-positive { color: #34a853; }
+        .change-positive:before { content: "↑ "; }
+        .change-negative { color: #ea4335; }
+        .change-negative:before { content: "↓ "; }
+        
+        .section { margin-bottom: 35px; }
+        .section-title { font-size: 20px; font-weight: 700; color: #202124; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e8eaed; }
+        
+        .data-table { width: 100%; border-collapse: collapse; margin: 15px 0; background: white; border: 1px solid #e8eaed; border-radius: 8px; overflow: hidden; }
+        .data-table thead { background: #f8f9fa; }
+        .data-table th { padding: 12px; text-align: left; font-weight: 600; color: #5f6368; font-size: 13px; text-transform: uppercase; border-bottom: 2px solid #e8eaed; }
+        .data-table td { padding: 12px; border-bottom: 1px solid #f8f9fa; font-size: 14px; }
+        .data-table tr:hover { background: #f8f9fa; }
+        
+        .chart-placeholder { background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%); border: 2px dashed #dadce0; border-radius: 8px; padding: 40px; text-align: center; color: #5f6368; margin: 20px 0; font-size: 18px; }
+        
+        .highlight-box { background: #d4edda; border-left: 5px solid #34a853; padding: 20px; border-radius: 6px; margin: 20px 0; }
+        .highlight-box h3 { color: #0f5132; font-size: 18px; margin-bottom: 10px; }
+        .highlight-box .metric { font-size: 32px; font-weight: 700; color: #0f5132; margin: 10px 0; }
+        
+        .redflag-box { background: #f8d7da; border-left: 5px solid #ea4335; padding: 20px; border-radius: 6px; margin: 20px 0; }
+        .redflag-box h3 { color: #842029; font-size: 18px; margin-bottom: 10px; }
+        
+        .intent-group { background: white; border: 2px solid #e8eaed; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .intent-badge { padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; display: inline-block; margin-bottom: 15px; }
+        .intent-high { background: #d4edda; color: #0f5132; }
+        .intent-medium { background: #fff3cd; color: #997404; }
+        .intent-low { background: #f8d7da; color: #842029; }
+        
+        .creative-card { background: white; border: 2px solid #e8eaed; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .performance-bar { background: #e8eaed; height: 30px; border-radius: 15px; overflow: hidden; margin: 10px 0; }
+        .performance-fill { height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 13px; }
+        .winner { background: linear-gradient(90deg, #34a853 0%, #0f9d58 100%); }
+        .loser { background: linear-gradient(90deg, #ea4335 0%, #d33b2c 100%); }
+        
+        .test-container { background: white; border: 2px solid #e8eaed; border-radius: 8px; padding: 25px; margin-bottom: 25px; }
+        .test-variants { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 20px 0; }
+        .variant-card { border: 2px solid #e8eaed; border-radius: 8px; padding: 20px; position: relative; }
+        .variant-card.winner { border-color: #34a853; background: #f0f8f3; }
+        .winner-badge { position: absolute; top: -12px; right: 20px; background: #34a853; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+        
+        @media print { body { background: white; } .page { box-shadow: none; padding: 20px; } }
+    </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+
+<script>
+    // initialize db
+    const db = new PouchDB("editable_pages");
+
+    const PAGE_ID = "google_ads_report_page";
+
+    // ---- LOAD SAVED CONTENT ----
+    db.get(PAGE_ID).then(doc => {
+        document.body.innerHTML = doc.html;
+        attachAutoSave();   // reattach events after overwrite
+    }).catch(err => {
+        if (err.status === 404) {
+            // first time — nothing saved yet
+            attachAutoSave();
+        }
+    });
+
+    // ---- SAVE LOGIC ----
+    function attachAutoSave() {
+        let timeout;
+        document.body.addEventListener("input", () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(saveToDB, 500);  // debounce
+        });
+    }
+
+    function saveToDB() {
+        db.get(PAGE_ID)
+            .then(doc => {
+                doc.html = document.body.innerHTML;
+                doc.updated_at = new Date().toISOString();
+                return db.put(doc);
+            })
+            .catch(err => {
+                if (err.status === 404) {
+                    return db.put({
+                        _id: PAGE_ID,
+                        html: document.body.innerHTML,
+                        updated_at: new Date().toISOString()
+                    });
+                }
+            });
+    }
+</script>
+<body id="page" contenteditable="true">
+
+    <!-- REPORT 10: WEEKLY OPTIMIZATION SUMMARY -->
+    <div class="page">
+        <div class="header">
+            <h1>Weekly Optimization Summary</h1>
+            <div class="report-meta">
+                <div class="meta-item"><label>Client</label><div class="value">[Client Name]</div></div>
+                <div class="meta-item"><label>Week</label><div class="value">[Week of MM/DD]</div></div>
+                <div class="meta-item"><label>Manager</label><div class="value">[Your Name]</div></div>
+            </div>
+        </div>
+
+        <div class="report-header">
+            <h2>This Week's Optimizations</h2>
+            <div class="subtitle">[Start Date] - [End Date]</div>
+        </div>
+
+        <div class="action-card">
+            <div class="action-header">
+                <div class="action-number">1</div>
+                <div class="action-title">Added 47 Negative Keywords</div>
+            </div>
+            <div class="action-section">
+                <label>What Changed</label>
+                <div class="content">Added negative keywords to exclude low-intent searches generating clicks but zero conversions.</div>
+            </div>
+            <div class="action-section">
+                <label>Why</label>
+                <div class="content">Search term report showed $342 spent on "free [product]", "cheap alternative" queries with 0 conversions.</div>
+            </div>
+            <div class="action-section">
+                <label>Expected Impact</label>
+                <div class="content">Estimated $1,368/month saved. Should improve ROAS by 8-12%.
+                    <span class="impact-badge impact-positive">Positive Impact</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-card">
+            <div class="action-header">
+                <div class="action-number">2</div>
+                <div class="action-title">Increased Bids on Top 10 Converting Keywords</div>
+            </div>
+            <div class="action-section">
+                <label>What Changed</label>
+                <div class="content">Raised bids 15-25% on keywords with ROAS >5:1 losing impression share due to rank.</div>
+            </div>
+            <div class="action-section">
+                <label>Why</label>
+                <div class="content">40% lost impression share (rank) on profitable keywords. Leaving money on the table.</div>
+            </div>
+            <div class="action-section">
+                <label>Expected Impact</label>
+                <div class="content">200-300 additional clicks/week, ~25 conversions at profitable ROAS.
+                    <span class="impact-badge impact-positive">Positive Impact</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <h3>Next Week's Micro-Actions</h3>
+            <ul>
+                <li>Monitor new RSA performance and pause poor performers by Friday</li>
+                <li>Analyze search terms from increased bid keywords for expansion</li>
+                <li>Set up automated rule for ad groups with ROAS <2:1 after $500 spend</li>
+                <li>Review PMax asset groups for creative refresh opportunities</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- REPORT 11: MONTHLY PERFORMANCE REPORT -->
+    <div class="page">
+        <div class="header">
+            <h1>Monthly Performance Report</h1>
+            <div class="report-meta">
+                <div class="meta-item"><label>Client</label><div class="value">[Client Name]</div></div>
+                <div class="meta-item"><label>Period</label><div class="value">[Month Year]</div></div>
+                <div class="meta-item"><label>Report Date</label><div class="value">[MM/DD/YY]</div></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Key Performance Indicators</div>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="label">Total Spend</div>
+                    <div class="value">$12,450</div>
+                    <div class="change change-positive">+8.3%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="label">Conversions</div>
+                    <div class="value">187</div>
+                    <div class="change change-positive">+23.7%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="label">ROAS</div>
+                    <div class="value">4.8:1</div>
+                    <div class="change change-positive">+14.3%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="label">CPA</div>
+                    <div class="value">$66.58</div>
+                    <div class="change change-positive">-12.5%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Performance Trends</div>
+            <div class="chart-placeholder">📊 Insert MoM Trend Chart: Spend, Conversions, ROAS</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Top Performing Audiences</div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Audience</th><th>Conversions</th><th>ROAS</th><th>CPA</th><th>Spend</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>In-Market: [Category]</td><td>67</td><td>5.8:1</td><td>$52.34</td><td>$3,506</td></tr>
+                    <tr><td>Custom Intent</td><td>43</td><td>4.9:1</td><td>$61.28</td><td>$2,635</td></tr>
+                    <tr><td>Remarketing</td><td>38</td><td>6.2:1</td><td>$48.95</td><td>$1,860</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Top Keywords</div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Keyword</th><th>Match</th><th>Conv.</th><th>ROAS</th><th>Spend</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>[keyword 1]</td><td>Exact</td><td>34</td><td>7.2:1</td><td>$1,890</td></tr>
+                    <tr><td>[keyword 2]</td><td>Phrase</td><td>28</td><td>5.9:1</td><td>$1,456</td></tr>
+                    <tr><td>[keyword 3]</td><td>Exact</td><td>23</td><td>6.4:1</td><td>$1,234</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="next-steps">
+            <h3>Recommendations for Next Month</h3>
+            <ul>
+                <li>Scale In-Market audience budget by 30% based on strong ROAS</li>
+                <li>Expand [keyword 1] to additional match types</li>
+                <li>Launch remarketing campaign for cart abandoners</li>
+                <li>Test new ad creative focused on [benefit]</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- REPORT 12: EXECUTIVE SUMMARY -->
+    <div class="page">
+        <div class="header" style="border-color: #202124;">
+            <h1>Executive Summary</h1>
+            <div class="report-meta">
+                <div class="meta-item"><label>Client</label><div class="value">[Client Name]</div></div>
+                <div class="meta-item"><label>Period</label><div class="value">[Month Year]</div></div>
+                <div class="meta-item"><label>Report Date</label><div class="value">[MM/DD/YY]</div></div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h3>📈 Key Wins</h3>
+            <p><strong>Revenue up 24% month-over-month</strong> driven by improved targeting and bid optimization.</p>
+            <div class="metric">$59,840 Revenue Generated</div>
+            <p>ROAS improved from 3.9:1 to 4.8:1 (+23%) while maintaining consistent spend levels.</p>
+        </div>
+
+        <div class="highlight-box">
+            <h3>✨ Highlights</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Added 127 negative keywords, saving $1,800/month in wasted spend</li>
+                <li>Launched 3 new high-performing audiences with 6.2:1 ROAS</li>
+                <li>Conversion rate improved from 2.04% to 2.27% through landing page tests</li>
+                <li>Captured 15% more market share in key product categories</li>
+            </ul>
+        </div>
+
+        <div class="redflag-box">
+            <h3>⚠️ Areas Needing Attention</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Mobile conversion rate (1.8%) lags desktop (3.1%) - mobile UX review needed</li>
+                <li>PMax campaign underperforming vs Search - asset refresh required</li>
+                <li>CPC increasing 8% in competitive keywords - monitor closely</li>
+            </ul>
+        </div>
+
+        <div class="next-steps">
+            <h3>Next Steps (Next 30 Days)</h3>
+            <ul>
+                <li>Audit and optimize mobile landing page experience</li>
+                <li>Refresh PMax creative assets with new photography and copy</li>
+                <li>Scale top-performing audiences by 40%</li>
+                <li>Test value-based bidding strategy in Search campaigns</li>
+                <li>Launch retargeting for cart abandoners</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- REPORT 13: QUERY-LEVEL INTENT REPORT -->
+    <div class="page">
+        <div class="header">
+            <h1>Query-Level Intent Report</h1>
+            <div class="report-meta">
+                <div class="meta-item"><label>Client</label><div class="value">[Client Name]</div></div>
+                <div class="meta-item"><label>Period</label><div class="value">[Date Range]</div></div>
+                <div class="meta-item"><label>Total Queries Analyzed</label><div class="value">[#]</div></div>
+            </div>
+        </div>
+
+        <div class="intent-group">
+            <div class="intent-badge intent-high">HIGH INTENT - Purchase Ready</div>
+            <h3 style="margin-bottom: 15px;">Profitable Queries to Expand</h3>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Search Term</th><th>Conversions</th><th>ROAS</th><th>Spend</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>"buy [product] online"</td><td>23</td><td>8.2:1</td><td>$890</td></tr>
+                    <tr><td>"[product] near me"</td><td>18</td><td>7.5:1</td><td>$745</td></tr>
+                    <tr><td>"best [product] for [use case]"</td><td>15</td><td>6.8:1</td><td>$678</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 15px; color: #0f5132;"><strong>Action:</strong> Increase bids 20-30% and create dedicated ad groups for these high-intent queries.</p>
+        </div>
+
+        <div class="intent-group">
+            <div class="intent-badge intent-medium">MEDIUM INTENT - Research Phase</div>
+            <h3 style="margin-bottom: 15px;">Nurture Opportunities</h3>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Search Term</th><th>Clicks</th><th>Conv. Rate</th><th>Spend</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>"[product] reviews"</td><td>234</td><td>1.3%</td><td>$456</td></tr>
+                    <tr><td>"how to choose [product]"</td><td>189</td><td>0.8%</td><td>$389</td></tr>
+                    <tr><td>"[product] comparison"</td><td>156</td><td>1.1%</td><td>$312</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 15px; color: #997404;"><strong>Action:</strong> Create content-focused landing pages and reduce bids by 15%. Add to remarketing audiences.</p>
+        </div>
+
+        <div class="intent-group">
+            <div class="intent-badge intent-low">LOW INTENT - Wasted Spend</div>
+            <h3 style="margin-bottom: 15px;">Queries to Exclude</h3>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Search Term</th><th>Clicks</th><th>Conversions</th><th>Wasted $</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>"free [product]"</td><td>156</td><td>0</td><td>$342</td></tr>
+                    <tr><td>"[product] DIY"</td><td>89</td><td>0</td><td>$198</td></tr>
+                    <tr><td>"cheap [product] alternative"</td><td>67</td><td>0</td><td>$145</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 15px; color: #842029;"><strong>Action:</strong> Add as negative keywords immediately. Total savings: $685/month</p>
+        </div>
+    </div>
+
+    <!-- REPORT 14: CREATIVE PERFORMANCE -->
+    <div class="page">
+        <div class="header">
+            <h1>Creative Performance & Insights</h1>
+            <div class="report-meta">
+                <div class="meta-item"><label>Client</label><div class="value">[Client Name]</div></div>
+                <div class="meta-item"><label>Period</label><div class="value">[Date Range]</div></div>
+                <div class="meta-item"><label>Creatives Tested</label><div class="value">[#]</div></div>
+            </div>
+        </div>
+
+        <div class="creative-card">
+            <h3 style="margin-bottom: 15px;">RSA: "Benefit-Focused Messaging"</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0;">
+                <div><strong>CTR:</strong> 4.2%</div>
+                <div><strong>Conv. Rate:</strong> 3.1%</div>
+                <div><strong>ROAS:</strong> 6.8:1</div>
+            </div>
+            <div class="performance-bar">
+                <div class="performance-fill winner" style="width: 85%;">Winner - Scale This</div>
+            </div>
+            <p style="margin-top: 10px;"><strong>Insight:</strong> Headlines emphasizing outcomes ("Save 4 Hours Weekly") outperform feature lists by 42%.</p>
+        </div>
+
+        <div class="creative-card">
+            <h3 style="margin-bottom: 15px;">RSA: "Feature-Based Messaging"</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0;">
+                <div><strong>CTR:</strong> 2.8%</div>
+                <div><strong>Conv. Rate:</strong> 1.9%</div>
+                <div><strong>ROAS:</strong> 3.2:1</div>
+            </div>
+            <div class="performance-bar">
+                <div class="performance-fill loser" style="width: 40%;">Underperformer - Pause</div>
+            </div>
+            <p style="margin-top: 10px;"><strong>Insight:</strong> Generic feature lists don't resonate. Users want to know "what's in it for me."</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Ad Fatigue Indicators</div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Ad</th><th>Impressions</th><th>CTR Trend</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ad #1</td><td>450K</td><td style="color: #ea4335;">↓ 18% (4 weeks)</td><td>Refresh Needed</td></tr>
+                    <tr><td>Ad #2</td><td>280K</td><td style="color: #fbbc04;">Stable</td><td>Monitor</td></tr>
+                    <tr><td>Ad #3</td><td>120K</td><td style="color: #34a853;">↑ 12%</td><td>Healthy</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="next-steps">
+            <h3>Creative Recommendations</h3>
+            <ul>
+                <li>Develop 3 new benefit-focused RSA variations for Q2</li>
+                <li>Refresh Ad #1 creative immediately (showing fatigue)</li>
+                <li>Test emotional vs rational messaging in headlines</li>
+                <li>Add customer testimonials to ad descriptions</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- REPORT 15: AUDIENCE INSIGHTS -->
+    <div class="page">
+        <div class="header">
+            <h1>Audience Insights Report</h1>
+            <div class="report-meta">
+                <div class="meta-item"><label>Client</label><div class="value">[Client Name]</div></div>
+                <div class="meta-item"><label>Period</label><div class="value">[Date Range]</div></div>
+                <div class="meta-item"><label>Total Users</label><div class="value">[#]</div></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Demographics Performance</div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Age Group</th><th>Conversions</th><th>ROAS</th><th>CPA</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>25-34</td><td>89</td><td>5.8:1</td><td>$58</td><td>Scale +30%</td></tr>
+                    <tr><td>35-44</td><td>67</td><td>5.2:1</td><td>$64</td><td>Scale +20%</td></tr>
+                    <tr><td>45-54</td><td>23</td><td>3.1:1</td><td>$98</td><td>Reduce budget</td></tr>
+                    <tr><td>55-64</td><td>8</td><td>1.8:1</td><td>$142</td><td>Pause targeting</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Geographic Performance</div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Location</th><th>Conv.</th><th>ROAS</th><th>% of Spend</th><th>Opportunity

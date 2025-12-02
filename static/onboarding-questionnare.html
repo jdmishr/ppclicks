@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Ads Strategy Call - Discovery Questionnaire</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/8.0.1/pouchdb.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .save-controls {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 2px solid #e8eaed;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .client-input-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .save-controls input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e8eaed;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .save-controls input:focus {
+            outline: none;
+            border-color: #4285f4;
+        }
+
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #4285f4;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-dropdown.show {
+            display: block;
+        }
+
+        .search-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f8f9fa;
+            transition: background 0.2s;
+        }
+
+        .search-item:hover {
+            background: #f8f9fa;
+        }
+
+        .search-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-item-name {
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 4px;
+        }
+
+        .search-item-date {
+            font-size: 12px;
+            color: #5f6368;
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #5f6368;
+            font-style: italic;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #4285f4;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1967d2;
+        }
+
+        .btn-success {
+            background: #34a853;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #0f9d58;
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #5f6368;
+            border: 2px solid #e8eaed;
+        }
+
+        .btn-secondary:hover {
+            background: #e8eaed;
+        }
+
+        .alert {
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #0f5132;
+            border: 1px solid #badbcc;
+        }
+
+        .alert-info {
+            background: #cfe2ff;
+            color: #084298;
+            border: 1px solid #b6d4fe;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .intro-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 5px solid #4285f4;
+        }
+
+        .intro-section h2 {
+            color: #1a73e8;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .intro-section p {
+            color: #5f6368;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .category {
+            margin-bottom: 50px;
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #34a853 0%, #0f9d58 100%);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .category-number {
+            background: rgba(255,255,255,0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .category-header h3 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .question {
+            background: white;
+            border: 2px solid #e8eaed;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .question:hover {
+            border-color: #4285f4;
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #4285f4;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 10px;
+        }
+
+        .question-subtext {
+            color: #5f6368;
+            font-size: 14px;
+            margin-top: 8px;
+            font-style: italic;
+            padding-left: 40px;
+        }
+
+        .answer-area {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            min-height: 80px;
+            border: 2px dashed #dadce0;
+        }
+
+        .answer-area textarea {
+            width: 100%;
+            min-height: 60px;
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            font-family: inherit;
+            resize: vertical;
+            outline: none;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+
+        .tag.critical {
+            background: #fce8e6;
+            color: #d93025;
+        }
+
+        .tag.nice-to-know {
+            background: #e6f4ea;
+            color: #137333;
+        }
+
+        .tips-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .tips-box h4 {
+            color: #997404;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips-box ul {
+            margin-left: 20px;
+            color: #856404;
+            font-size: 14px;
+        }
+
+        .tips-box li {
+            margin-bottom: 6px;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 2px solid #e8eaed;
+        }
+
+        .footer p {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .footer .contact {
+            color: #1a73e8;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .save-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Google Ads Strategy Call</h1>
+            <p>Discovery Questionnaire - Let's understand your business and goals to craft a winning strategy</p>
+        </div>
+
+        <div class="save-controls">
+            <div class="client-input-wrapper">
+                <input 
+                    type="text" 
+                    id="clientName" 
+                    placeholder="🔍 Search or enter client name (e.g., Acme Corp)" 
+                    autocomplete="off"
+                    oninput="searchClients(this.value)"
+                    onfocus="searchClients(this.value)"
+                />
+                <div id="searchDropdown" class="search-dropdown"></div>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn btn-success" onclick="saveQuestionnaire()">💾 Save Progress</button>
+                <button class="btn btn-primary" onclick="loadQuestionnaire()">📂 Load Saved</button>
+                <button class="btn btn-secondary" onclick="clearForm()">🗑️ Clear Form</button>
+            </div>
+            <div id="saveMessage" style="width: 100%;"></div>
+        </div>
+
+        <div class="content">
+            <div class="intro-section">
+                <h2>Welcome! 👋</h2>
+                <p>This questionnaire will guide our strategy call and help us understand your business, challenges, and opportunities. Your responses are automatically saved to your browser's local storage, so you can come back anytime!</p>
+            </div>
+
+            <!-- CATEGORY 1: BUSINESS FUNDAMENTALS -->
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-number">1</div>
+                    <h3>Business Fundamentals</h3>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">1</span>
+                        Tell me about your business in one sentence.
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="question-subtext">What do you sell/offer? Who do you serve?</div>
+                    <div class="answer-area">
+                        <textarea id="q1" placeholder="E.g., 'We sell premium dog food for health-conscious pet owners'"></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">2</span>
+                        What's your business model?
+                    </div>
+                    <span class="tag">Important</span>
+                    <div class="question-subtext">E.g., E-commerce, Lead generation, SaaS subscription, Local service, B2B sales, etc.</div>
+                    <div class="answer-area">
+                        <textarea id="q2" placeholder="Your answer..."></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">3</span>
+                        What's your average order value or customer lifetime value?
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="question-subtext">This helps us determine acceptable cost-per-acquisition and budget strategy.</div>
+                    <div class="answer-area">
+                        <textarea id="q3" placeholder="E.g., 'AOV: $150' or 'LTV: $2,400 over 12 months'"></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">4</span>
+                        What are your profit margins?
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="question-subtext">Knowing margins helps us calculate realistic ROAS targets.</div>
+                    <div class="answer-area">
+                        <textarea id="q4" placeholder="E.g., '40% margin'"></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">5</span>
+                        How long is your typical sales cycle?
+                    </div>
+                    <span class="tag">Important</span>
+                    <div class="question-subtext">Do people buy immediately or research for days/weeks/months?</div>
+                    <div class="answer-area">
+                        <textarea id="q5" placeholder="E.g., 'Same day - impulse purchase'"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORY 2: GOALS & KPIs -->
+            <div class="category">
+                <div class="category-header" style="background: linear-gradient(135deg, #fbbc04 0%, #f9ab00 100%);">
+                    <div class="category-number">2</div>
+                    <h3>Goals & Success Metrics</h3>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">6</span>
+                        What's your #1 business goal for the next 90 days?
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area">
+                        <textarea id="q6" placeholder="Your answer..."></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">7</span>
+                        What does success look like in numbers?
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area">
+                        <textarea id="q7" placeholder="E.g., 'Generate 50 qualified leads per month'"></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">8</span>
+                        What's an acceptable cost per acquisition (CPA)?
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area">
+                        <textarea id="q8" placeholder="E.g., '$75 per lead'"></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">9</span>
+                        What's your monthly advertising budget?
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area">
+                        <textarea id="q9" placeholder="E.g., '$5,000/month'"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORY 3: TARGET AUDIENCE -->
+            <div class="category">
+                <div class="category-header" style="background: linear-gradient(135deg, #ea4335 0%, #d33b2c 100%);">
+                    <div class="category-number">3</div>
+                    <h3>Target Audience & Market</h3>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">10</span>
+                        Who is your ideal customer? Paint me a picture.
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area">
+                        <textarea id="q10" placeholder="Demographics, job title, interests, pain points..."></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">11</span>
+                        What problem are you solving for your customers?
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area">
+                        <textarea id="q11" placeholder="Your answer..."></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">12</span>
+                        What would your customers type into Google?
+                    </div>
+                    <span class="tag">Important</span>
+                    <div class="answer-area">
+                        <textarea id="q12" placeholder="E.g., 'best CRM for real estate agents'"></textarea>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">
+                        <span class="question-number">13</span>
+                        What geographic areas do you serve?
+                    </div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area">
+                        <textarea id="q13" placeholder="E.g., 'Los Angeles metro area only'"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional categories continue with similar pattern... -->
+            <!-- For brevity, showing structure for remaining questions -->
+
+            <div class="category">
+                <div class="category-header" style="background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);">
+                    <div class="category-number">4</div>
+                    <h3>Competitive Landscape</h3>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">14</span>Who are your top 3 competitors?</div>
+                    <span class="tag">Important</span>
+                    <div class="answer-area"><textarea id="q14" placeholder="Your answer..."></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">15</span>What makes you different/better?</div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area"><textarea id="q15" placeholder="Your USP..."></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">16</span>What do competitors do better?</div>
+                    <span class="tag nice-to-know">Nice to Know</span>
+                    <div class="answer-area"><textarea id="q16" placeholder="Your answer..."></textarea></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                    <div class="category-number">5</div>
+                    <h3>Past Marketing Experience</h3>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">17</span>Have you run Google Ads before?</div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area"><textarea id="q17" placeholder="Your answer..."></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">18</span>What other marketing channels?</div>
+                    <span class="tag">Important</span>
+                    <div class="answer-area"><textarea id="q18" placeholder="Your answer..."></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">19</span>Do you have Google Ads account access?</div>
+                    <span class="tag">Important</span>
+                    <div class="answer-area"><textarea id="q19" placeholder="Yes / No / Not Sure"></textarea></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                    <div class="category-number">6</div>
+                    <h3>Website & Conversion Setup</h3>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">20</span>Website URL?</div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area"><textarea id="q20" placeholder="https://..."></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">21</span>Primary conversion action?</div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area"><textarea id="q21" placeholder="Purchase, Form, Call, etc."></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">22</span>GA4 installed?</div>
+                    <span class="tag">Important</span>
+                    <div class="answer-area"><textarea id="q22" placeholder="Yes / No / Not Sure"></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">23</span>Track conversions currently?</div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area"><textarea id="q23" placeholder="Yes / No / Partially"></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">24</span>Current conversion rate?</div>
+                    <span class="tag nice-to-know">Nice to Know</span>
+                    <div class="answer-area"><textarea id="q24" placeholder="E.g., '2.5%'"></textarea></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
+                    <div class="category-number">7</div>
+                    <h3>Creative Assets & Messaging</h3>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">25</span>Professional images/videos?</div>
+                    <span class="tag">Important</span>
+                    <div class="answer-area"><textarea id="q25" placeholder="Yes / No / Some"></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">26</span>Strongest marketing message?</div>
+                    <span class="tag">Important</span>
+                    <div class="answer-area"><textarea id="q26" placeholder="Your tagline..."></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">27</span>Offers or promotions?</div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area"><textarea id="q27" placeholder="Free trial, discount, etc."></textarea></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
+                    <div class="category-number">8</div>
+                    <h3>Operations & Fulfillment</h3>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">28</span>Can you handle increased volume?</div>
+                    <span class="tag critical">Critical</span>
+                    <div class="answer-area"><textarea id="q28" placeholder="Your answer..."></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">29</span>How do you follow up with leads?</div>
+                    <span class="tag">Important</span>
+                    <div class="answer-area"><textarea id="q29" placeholder="Phone, email, CRM..."></textarea></div>
+                </div>
+                <div class="question">
+                    <div class="question-text"><span class="question-number">30</span>Lead-to-customer close rate?</div>
+                    <span class="tag nice-to-know">Nice to Know</span>
+                    <div class="answer-area"><textarea id="q30" placeholder="E.g., '30%'"></textarea></div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <h4>💡 Pro Tips for Our Strategy Call</h4>
+                <ul>
+                    <li>Your answers are saved automatically to your browser</li>
+                    <li>Click "Save Progress" to create a named save point</li>
+                    <li>You can return anytime to complete the questionnaire</li>
+                    <li>All data stays on your device - nothing is sent to servers</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Thank you for taking the time to complete this questionnaire!</strong></p>
+            <p>This information will help us make our strategy call incredibly productive.</p>
+            <p style="margin-top: 20px;">Questions before our call?</p>
+            <p class="contact">📧 [your-email@agency.com] | 📞 [your-phone]</p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize PouchDB
+        const db = new PouchDB('google-ads-questionnaires');
+
+        // Search clients with interactive dropdown
+        async function searchClients(query) {
+            const dropdown = document.getElementById('searchDropdown');
+            
+            if (!query || query.length < 1) {
+                dropdown.classList.remove('show');
+                return;
+            }
+
+            try {
+                const result = await db.allDocs({ include_docs: true });
+                const clients = result.rows
+                    .map(row => row.doc)
+                    .filter(doc => 
+                        doc.clientName && 
+                        doc.clientName.toLowerCase().includes(query.toLowerCase())
+                    )
+                    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+                if (clients.length === 0) {
+                    dropdown.innerHTML = '<div class="no-results">No saved clients found. Type to create new entry.</div>';
+                    dropdown.classList.add('show');
+                } else {
+                    dropdown.innerHTML = clients.map(client => {
+                        const date = new Date(client.timestamp).toLocaleString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                        
+                        return `
+                            <div class="search-item" onclick="selectClient('${client.clientName}')">
+                                <div class="search-item-name">${client.clientName}</div>
+                                <div class="search-item-date">Last saved: ${date}</div>
+                            </div>
+                        `;
+                    }).join('');
+                    dropdown.classList.add('show');
+                }
+            } catch (err) {
+                console.error('Error searching clients:', err);
+                dropdown.classList.remove('show');
+            }
+        }
+
+        // Select a client from dropdown
+        function selectClient(clientName) {
+            document.getElementById('clientName').value = clientName;
+            document.getElementById('searchDropdown').classList.remove('show');
+            loadQuestionnaire();
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const inputWrapper = document.querySelector('.client-input-wrapper');
+            const dropdown = document.getElementById('searchDropdown');
+            
+            if (!inputWrapper.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        // Save questionnaire data
+        async function saveQuestionnaire() {
+            const clientName = document.getElementById('clientName').value.trim();
+            
+            if (!clientName) {
+                showMessage('Please enter a client name before saving!', 'info');
+                return;
+            }
+
+            const data = {
+                _id: clientName.toLowerCase().replace(/\s+/g, '-'),
+                clientName: clientName,
+                timestamp: new Date().toISOString(),
+                answers: {}
+            };
+
+            // Collect all answers
+            for (let i = 1; i <= 30; i++) {
+                const textarea = document.getElementById(`q${i}`);
+                if (textarea) {
+                    data.answers[`q${i}`] = textarea.value;
+                }
+            }
+
+            try {
+                // Try to get existing document
+                try {
+                    const existingDoc = await db.get(data._id);
+                    data._rev = existingDoc._rev;
+                } catch (err) {
+                    // Document doesn't exist yet, that's fine
+                }
+
+                await db.put(data);
+                showMessage(`✓ Saved successfully for ${clientName}!`, 'success');
+            } catch (err) {
+                console.error('Error saving:', err);
+                showMessage('Error saving data. Please try again.', 'info');
+            }
+        }
+
+        // Load questionnaire data
+        async function loadQuestionnaire() {
+            const clientName = document.getElementById('clientName').value.trim();
+            
+            if (!clientName) {
+                showMessage('Please enter a client name to load!', 'info');
+                return;
+            }
+
+            const docId = clientName.toLowerCase().replace(/\s+/g, '-');
+
+            try {
+                const doc = await db.get(docId);
+                
+                // Populate all fields
+                for (let i = 1; i <= 30; i++) {
+                    const textarea = document.getElementById(`q${i}`);
+                    if (textarea && doc.answers[`q${i}`]) {
+                        textarea.value = doc.answers[`q${i}`];
+                    }
+                }
+
+                const savedDate = new Date(doc.timestamp).toLocaleString();
+                showMessage(`✓ Loaded data for ${doc.clientName} (saved ${savedDate})`, 'success');
+            } catch (err) {
+                console.error('Error loading:', err);
+                showMessage('No saved data found for this client name.', 'info');
+            }
+        }
+
+        // Clear form
+        function clearForm() {
+            if (confirm('Are you sure you want to clear all answers?')) {
+                for (let i = 1; i <= 30; i++) {
+                    const textarea = document.getElementById(`q${i}`);
+                    if (textarea) {
+                        textarea.value = '';
+                    }
+                }
+                document.getElementById('clientName').value = '';
+                showMessage('Form cleared!', 'info');
+            }
+        }
+
+        // Show message
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('saveMessage');
+            messageDiv.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+            
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        // Auto-save every 30 seconds
+        setInterval(() => {
+            const clientName = document.getElementById('clientName').value.trim();
+            if (clientName) {
+                saveQuestionnaire();
+            }
+        }, 30000);
+    </script>
+</body>
+</html>

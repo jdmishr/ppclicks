@@ -2,61 +2,150 @@
 
 {% block content %}
   <!-- Hero -->
-  <section class="hero-gradient text-white">
+  <section class="hero-gradient text-white min-h-screen flex items-center">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div class="fade-in">
-          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
-            Get More Leads with Expert Google Ads Management for Local Businesses
-          </h1>
-          <p class="text-lg mb-6">
-            We turn ad spend into measurable growth. Average 4.3× ROAS across $200K managed spend.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#book-call" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold text-center">Book Your Free Strategy Call</a>
-            <a href="#case-studies" class="btn-secondary bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold text-center">See Case Studies</a>
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="space-y-8 animate-fade-in-left">
+          <div class="space-y-4">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+              Get More Leads with Expert Google Ads Management for Local Businesses
+            </h1>
+            <p class="text-lg sm:text-xl text-emerald-100 max-w-lg">
+              We turn ad spend into measurable growth. Average 4.3× ROAS across $200K managed spend.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 space-y-4 sm:space-y-0">
+            <a href="#book-call" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 animate-pulse-hover">
+              Book Your Free Strategy Call
+            </a>
+            <a href="#case-studies" class="btn-secondary bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-emerald-600 animate-pulse-hover">
+              See Case Studies
+            </a>
+          </div>
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4">
+              <div class="text-2xl font-bold">4.3×</div>
+              <div class="text-sm text-emerald-100">Avg ROAS</div>
+            </div>
+            <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4">
+              <div class="text-2xl font-bold">$200K</div>
+              <div class="text-sm text-emerald-100">Managed Spend</div>
+            </div>
+            <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4">
+              <div class="text-2xl font-bold">63%</div>
+              <div class="text-sm text-emerald-100">CPC Reduction</div>
+            </div>
           </div>
         </div>
-        <div class="fade-in">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=60" alt="Analytics dashboard" class="rounded-xl shadow-2xl" />
+        <div class="animate-fade-in-right">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-white to-transparent rounded-2xl transform rotate-6 scale-105 opacity-20"></div>
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=60" alt="Analytics dashboard" class="relative rounded-2xl shadow-2xl w-full max-w-md mx-auto lg:max-w-none lg:mx-0" />
+            <div class="absolute -bottom-6 -right-6 bg-emerald-500 text-white p-4 rounded-full shadow-lg animate-float">
+              <i class="fas fa-chart-line text-2xl"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Social Proof -->
-  <section class="bg-white py-12">
+  <section class="bg-gradient-to-r from-emerald-50 via-white to-emerald-50 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <p class="text-gray-600">Trusted by 100+ local businesses</p>
+      <div class="text-center mb-12 animate-fade-in-up">
+        <div class="inline-flex items-center bg-white rounded-full px-6 py-3 shadow-lg border border-emerald-100 mb-6">
+          <div class="flex items-center justify-center w-10 h-10 bg-emerald-100 rounded-full mr-4">
+            <i class="fas fa-shield-check text-emerald-600 text-lg"></i>
+          </div>
+          <div class="text-left">
+            <span class="text-sm font-semibold text-gray-600 uppercase tracking-wide">Trusted by</span>
+            <div class="flex items-baseline space-x-1">
+              <span class="text-2xl font-extrabold text-gray-900">100+</span>
+              <span class="text-sm text-gray-500 font-medium">local businesses</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
-        <span class="text-gray-700 font-semibold">Google Partner</span>
-        <span class="text-gray-700 font-semibold">$200K+ Managed Spend</span>
-        <span class="text-gray-700 font-semibold">4.3× Avg. ROAS</span>
-        <span class="text-gray-700 font-semibold">24hr Support</span>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in-up" style="animation-delay: 0.1s">
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+          <div class="flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-full mb-4 mx-auto">
+            <i class="fas fa-award text-emerald-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 text-center mb-2">Google Partner</h3>
+          <p class="text-sm text-gray-600 text-center">Certified expertise in Google Ads management</p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+          <div class="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4 mx-auto">
+            <i class="fas fa-clock text-blue-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 text-center mb-2">24/7 Support</h3>
+          <p class="text-sm text-gray-600 text-center">Always available when you need us</p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+          <div class="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full mb-4 mx-auto">
+            <i class="fas fa-chart-line text-purple-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 text-center mb-2">4.3× Avg. ROAS</h3>
+          <p class="text-sm text-gray-600 text-center">Industry-leading return on ad spend</p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+          <div class="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full mb-4 mx-auto">
+            <i class="fas fa-dollar-sign text-orange-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 text-center mb-2">$200K+ Managed</h3>
+          <p class="text-sm text-gray-600 text-center">Proven experience with scale</p>
+        </div>
+      </div>
+      
+      <!-- Client logos or testimonials preview -->
+      <div class="mt-12 text-center animate-fade-in-up" style="animation-delay: 0.2s">
+        <p class="text-gray-600 mb-4">Join businesses like:</p>
+        <div class="flex flex-wrap justify-center items-center gap-8 opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <span class="text-gray-400 font-semibold">Local HVAC Company</span>
+          <span class="text-gray-400">•</span>
+          <span class="text-gray-400 font-semibold">BrightSmile Dental</span>
+          <span class="text-gray-400">•</span>
+          <span class="text-gray-400 font-semibold">QuickFix Plumbing</span>
+          <span class="text-gray-400">•</span>
+          <span class="text-gray-400 font-semibold">Luxe Homes</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Stats -->
   <section class="bg-gray-100 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div class="fade-in">
-        <div class="stat-number text-4xl font-extrabold">63%</div>
-        <p class="text-gray-600 mt-2">Avg. CPC Reduction</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 animate-fade-in-up">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Proven Results</h2>
+        <p class="text-gray-600">Numbers don't lie. Here's what we deliver.</p>
       </div>
-      <div class="fade-in">
-        <div class="stat-number text-4xl font-extrabold">4.3×</div>
-        <p class="text-gray-600 mt-2">Average ROAS</p>
-      </div>
-      <div class="fade-in">
-        <div class="stat-number text-4xl font-extrabold">200K</div>
-        <p class="text-gray-600 mt-2">Dollars Managed</p>
-      </div>
-      <div class="fade-in">
-        <div class="stat-number text-4xl font-extrabold">128%</div>
-        <p class="text-gray-600 mt-2">Conversion Lift</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up">
+          <div class="text-4xl font-extrabold text-emerald-600 mb-2">63%</div>
+          <p class="text-gray-600 font-medium">Avg. CPC Reduction</p>
+          <div class="w-16 h-1 bg-emerald-500 mt-3 rounded-full"></div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.1s">
+          <div class="text-4xl font-extrabold text-blue-600 mb-2">4.3×</div>
+          <p class="text-gray-600 font-medium">Average ROAS</p>
+          <div class="w-16 h-1 bg-blue-500 mt-3 rounded-full"></div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s">
+          <div class="text-4xl font-extrabold text-purple-600 mb-2">$200K</div>
+          <p class="text-gray-600 font-medium">Dollars Managed</p>
+          <div class="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.3s">
+          <div class="text-4xl font-extrabold text-orange-600 mb-2">128%</div>
+          <p class="text-gray-600 font-medium">Conversion Lift</p>
+          <div class="w-16 h-1 bg-orange-500 mt-3 rounded-full"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -64,40 +153,52 @@
   <!-- Services -->
   <section id="services" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 fade-in">
+      <div class="text-center mb-12 animate-fade-in-up">
         <h2 class="text-3xl md:text-4xl font-extrabold mb-4">What You Get</h2>
         <p class="text-gray-600 max-w-2xl mx-auto">End-to-end Google Ads management built for local service businesses that want results, not reports.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-gray-50 p-6 rounded-xl fade-in">
-          <i class="fas fa-search-dollar text-green-600 text-2xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">Keyword &amp; Competitor Research</h3>
-          <p class="text-gray-600">We find high-intent, low-competition keywords your competitors miss.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up group">
+          <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-search-dollar text-emerald-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Keyword & Competitor Research</h3>
+          <p class="text-gray-700 leading-relaxed">We find high-intent, low-competition keywords your competitors miss, giving you the edge in crowded markets.</p>
         </div>
-        <div class="bg-gray-50 p-6 rounded-xl fade-in">
-          <i class="fas fa-ad text-green-600 text-2xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">Ad Copy &amp; Creative Testing</h3>
-          <p class="text-gray-600">Data-driven creative that speaks to your local market and drives clicks.</p>
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.1s">
+          <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-ad text-blue-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Ad Copy & Creative Testing</h3>
+          <p class="text-gray-700 leading-relaxed">Data-driven creative that speaks to your local market and drives clicks with compelling messaging.</p>
         </div>
-        <div class="bg-gray-50 p-6 rounded-xl fade-in">
-          <i class="fas fa-chart-line text-green-600 text-2xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">Bid &amp; Budget Optimization</h3>
-          <p class="text-gray-600">AI-assisted bidding plus human oversight to maximize every dollar.</p>
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s">
+          <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Bid & Budget Optimization</h3>
+          <p class="text-gray-700 leading-relaxed">AI-assisted bidding plus human oversight to maximize every dollar and achieve optimal ROI.</p>
         </div>
-        <div class="bg-gray-50 p-6 rounded-xl fade-in">
-          <i class="fas fa-landmark text-green-600 text-2xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">Landing Page Design</h3>
-          <p class="text-gray-600">Fast, mobile-first pages engineered to convert clicks into calls.</p>
+        <div class="bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.3s">
+          <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-landmark text-orange-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Landing Page Design</h3>
+          <p class="text-gray-700 leading-relaxed">Fast, mobile-first pages engineered to convert clicks into calls with seamless user experience.</p>
         </div>
-        <div class="bg-gray-50 p-6 rounded-xl fade-in">
-          <i class="fas fa-file-alt text-green-600 text-2xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">Weekly Reports &amp; Insights</h3>
-          <p class="text-gray-600">Plain-English updates and actionable next steps, not vanity metrics.</p>
+        <div class="bg-gradient-to-br from-gray-50 to-slate-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.4s">
+          <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-file-alt text-gray-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Weekly Reports & Insights</h3>
+          <p class="text-gray-700 leading-relaxed">Plain-English updates and actionable next steps, not vanity metrics that confuse more than help.</p>
         </div>
-        <div class="bg-gray-50 p-6 rounded-xl fade-in">
-          <i class="fas fa-headset text-green-600 text-2xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">24/7 Slack Support</h3>
-          <p class="text-gray-600">Direct line to strategists who actually manage your campaigns.</p>
+        <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.5s">
+          <div class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+            <i class="fas fa-headset text-green-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">24/7 Slack Support</h3>
+          <p class="text-gray-700 leading-relaxed">Direct line to strategists who actually manage your campaigns, not just customer service reps.</p>
         </div>
       </div>
     </div>
@@ -106,34 +207,85 @@
   <!-- Case Studies -->
   <section id="case-studies" class="py-20 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 fade-in">
+      <div class="text-center mb-12 animate-fade-in-up">
         <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Proof We Deliver</h2>
         <p class="text-gray-600">Real numbers from real clients.</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-xl shadow-md fade-in">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold">Local HVAC Company</h3>
-            <span class="text-green-600 font-semibold">+212% Leads</span>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up group overflow-hidden">
+          <div class="bg-gradient-to-r from-emerald-500 to-teal-500 p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-white">Local HVAC Company</h3>
+              <div class="bg-white bg-opacity-20 px-3 py-1 rounded-full">
+                <span class="text-white font-semibold">+212% Leads</span>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-600 mb-4">Reduced CPL from $120 to $38 in 90 days while scaling spend 3×.</p>
-          <div class="flex gap-6 text-sm text-gray-500">
-            <span>Spend: $45k</span>
-            <span>ROAS: 6.1×</span>
-            <span>CPC: –63%</span>
+          <div class="p-6">
+            <p class="text-gray-700 mb-6 leading-relaxed">Reduced CPL from $120 to $38 in 90 days while scaling spend 3×.</p>
+            <div class="grid grid-cols-3 gap-4 text-sm">
+              <div class="text-center">
+                <div class="text-emerald-600 font-bold">Spend: $45k</div>
+              </div>
+              <div class="text-center">
+                <div class="text-blue-600 font-bold">ROAS: 6.1×</div>
+              </div>
+              <div class="text-center">
+                <div class="text-orange-600 font-bold">CPC: –63%</div>
+              </div>
+            </div>
           </div>
+          <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500 opacity-10 rounded-full transform translate-x-12 -translate-y-12"></div>
         </div>
-        <div class="bg-white p-6 rounded-xl shadow-md fade-in">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold">Dental Clinic Chain</h3>
-            <span class="text-green-600 font-semibold">+158% Bookings</span>
+        <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up group overflow-hidden" style="animation-delay: 0.1s">
+          <div class="bg-gradient-to-r from-blue-500 to-indigo-500 p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-white">Dental Clinic Chain</h3>
+              <div class="bg-white bg-opacity-20 px-3 py-1 rounded-full">
+                <span class="text-white font-semibold">+158% Bookings</span>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-600 mb-4">Geo-targeted campaigns drove 4.8× ROAS across 5 locations.</p>
-          <div class="flex gap-6 text-sm text-gray-500">
-            <span>Spend: $28k</span>
-            <span>ROAS: 4.8×</span>
-            <span>CPC: –41%</span>
+          <div class="p-6">
+            <p class="text-gray-700 mb-6 leading-relaxed">Geo-targeted campaigns drove 4.8× ROAS across 5 locations.</p>
+            <div class="grid grid-cols-3 gap-4 text-sm">
+              <div class="text-center">
+                <div class="text-emerald-600 font-bold">Spend: $28k</div>
+              </div>
+              <div class="text-center">
+                <div class="text-blue-600 font-bold">ROAS: 4.8×</div>
+              </div>
+              <div class="text-center">
+                <div class="text-orange-600 font-bold">CPC: –41%</div>
+              </div>
+            </div>
           </div>
+          <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500 opacity-10 rounded-full transform translate-x-12 -translate-y-12"></div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up group overflow-hidden" style="animation-delay: 0.2s">
+          <div class="bg-gradient-to-r from-orange-500 to-red-500 p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold text-white">QuickFix Plumbing</h3>
+              <div class="bg-white bg-opacity-20 px-3 py-1 rounded-full">
+                <span class="text-white font-semibold">+187% Calls</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-700 mb-6 leading-relaxed">Increased phone calls by 187% while reducing cost per call by 45% in just 60 days.</p>
+            <div class="grid grid-cols-3 gap-4 text-sm">
+              <div class="text-center">
+                <div class="text-emerald-600 font-bold">Spend: $35k</div>
+              </div>
+              <div class="text-center">
+                <div class="text-blue-600 font-bold">ROAS: 5.4×</div>
+              </div>
+              <div class="text-center">
+                <div class="text-orange-600 font-bold">CPC: –45%</div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500 opacity-10 rounded-full transform translate-x-12 -translate-y-12"></div>
         </div>
       </div>
     </div>
@@ -142,22 +294,53 @@
   <!-- Testimonials -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 fade-in">
+      <div class="text-center mb-12 animate-fade-in-up">
         <h2 class="text-3xl md:text-4xl font-extrabold mb-4">What Clients Say</h2>
+        <p class="text-gray-600">Hear from businesses that have transformed their growth with our help.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
-        <blockquote class="bg-gray-50 p-6 rounded-xl fade-in">
-          <p class="text-gray-700 mb-4">"We doubled our lead volume within 60 days—without increasing spend. These guys know Google Ads inside out."</p>
-          <cite class="text-gray-900 font-semibold">— Sarah K., Owner, QuickFix Plumbing</cite>
-        </blockquote>
-        <blockquote class="bg-gray-50 p-6 rounded-xl fade-in">
-          <p class="text-gray-700 mb-4">"Transparent reporting and lightning-fast communication. Finally, an agency that treats my money like their own."</p>
-          <cite class="text-gray-900 font-semibold">— Miguel R., CEO, BrightSmile Dental</cite>
-        </blockquote>
-        <blockquote class="bg-gray-50 p-6 rounded-xl fade-in">
-          <p class="text-gray-700 mb-4">"The free audit alone uncovered $8k in wasted spend. Hired them on the spot."</p>
-          <cite class="text-gray-900 font-semibold">— Dana L., Marketing Director, Luxe Homes</cite>
-        </blockquote>
+        <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up group">
+          <div class="relative">
+            <div class="absolute -top-4 -left-4 w-12 h-12 bg-emerald-500 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-300"></div>
+            <i class="fas fa-quote-left text-4xl text-emerald-500 mb-4"></i>
+          </div>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">"We doubled our lead volume within 60 days—without increasing spend. These guys know Google Ads inside out."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold mr-4">SK</div>
+            <div>
+              <cite class="text-gray-900 font-semibold block">Sarah K., Owner</cite>
+              <span class="text-gray-600 text-sm">QuickFix Plumbing</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up group" style="animation-delay: 0.1s">
+          <div class="relative">
+            <div class="absolute -top-4 -left-4 w-12 h-12 bg-blue-500 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-300"></div>
+            <i class="fas fa-quote-left text-4xl text-blue-500 mb-4"></i>
+          </div>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">"Transparent reporting and lightning-fast communication. Finally, an agency that treats my money like their own."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">MR</div>
+            <div>
+              <cite class="text-gray-900 font-semibold block">Miguel R., CEO</cite>
+              <span class="text-gray-600 text-sm">BrightSmile Dental</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fade-in-up group" style="animation-delay: 0.2s">
+          <div class="relative">
+            <div class="absolute -top-4 -left-4 w-12 h-12 bg-purple-500 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-300"></div>
+            <i class="fas fa-quote-left text-4xl text-purple-500 mb-4"></i>
+          </div>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">"The free audit alone uncovered $8k in wasted spend. Hired them on the spot."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">DL</div>
+            <div>
+              <cite class="text-gray-900 font-semibold block">Dana L., Marketing Director</cite>
+              <span class="text-gray-600 text-sm">Luxe Homes</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -212,29 +395,75 @@
   <!-- Process -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 fade-in">
+      <div class="text-center mb-12 animate-fade-in-up">
         <h2 class="text-3xl md:text-4xl font-extrabold mb-4">How It Works</h2>
+        <p class="text-gray-600">Simple, proven process that delivers results every time.</p>
       </div>
-      <div class="grid md:grid-cols-4 gap-8 text-center">
-        <div class="fade-in">
-          <div class="bg-green-100 text-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
-          <h3 class="font-bold mb-2">Free Audit</h3>
-          <p class="text-gray-600 text-sm">We find wasted spend &amp; growth opportunities in 24 hrs.</p>
+      
+      <!-- Process Flow -->
+      <div class="relative mb-16">
+        <!-- Progress bar background track -->
+        <div class="absolute top-1/2 left-0 w-full h-1 transform -translate-y-1/2 bg-gray-200 rounded-full"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8 relative">
+        <div class="text-center group animate-fade-in-up">
+          <div class="bg-gradient-to-br from-emerald-500 to-teal-500 text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <span class="text-2xl font-bold">1</span>
+            <div class="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Free Audit</h3>
+          <p class="text-gray-600 leading-relaxed">We find wasted spend & growth opportunities in 24 hrs, giving you a clear picture of what's possible.</p>
+          <div class="w-12 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto mt-6 rounded-full"></div>
         </div>
-        <div class="fade-in">
-          <div class="bg-green-100 text-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
-          <h3 class="font-bold mb-2">Strategy Call</h3>
-          <p class="text-gray-600 text-sm">Review our 90-day growth plan tailored to your goals.</p>
+        <div class="text-center group animate-fade-in-up" style="animation-delay: 0.1s">
+          <div class="bg-gradient-to-br from-blue-500 to-indigo-500 text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <span class="text-2xl font-bold">2</span>
+            <div class="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Strategy Call</h3>
+          <p class="text-gray-600 leading-relaxed">Review our 90-day growth plan tailored to your goals, ensuring we're aligned from day one.</p>
+          <div class="w-12 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mt-6 rounded-full"></div>
         </div>
-        <div class="fade-in">
-          <div class="bg-green-100 text-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
-          <h3 class="font-bold mb-2">Launch</h3>
-          <p class="text-gray-600 text-sm">New campaigns, ads &amp; landing pages go live within 7 days.</p>
+        <div class="text-center group animate-fade-in-up" style="animation-delay: 0.2s">
+          <div class="bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <span class="text-2xl font-bold">3</span>
+            <div class="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Launch</h3>
+          <p class="text-gray-600 leading-relaxed">New campaigns, ads & landing pages go live within 7 days, getting you in front of customers fast.</p>
+          <div class="w-12 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-6 rounded-full"></div>
         </div>
-        <div class="fade-in">
-          <div class="bg-green-100 text-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
-          <h3 class="font-bold mb-2">Optimize</h3>
-          <p class="text-gray-600 text-sm">Weekly tweaks keep you ahead of competitors &amp; algorithms.</p>
+        <div class="text-center group animate-fade-in-up" style="animation-delay: 0.3s">
+          <div class="bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <span class="text-2xl font-bold">4</span>
+            <div class="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-gray-900">Optimize</h3>
+          <p class="text-gray-600 leading-relaxed">Weekly tweaks keep you ahead of competitors & algorithms, continuously improving performance.</p>
+          <div class="w-12 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mt-6 rounded-full"></div>
+        </div>
+      </div>
+      
+      <!-- Step progression indicators -->
+      <div class="mt-12 text-center">
+        <div class="inline-flex items-center space-x-8 text-sm text-gray-500">
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+            <span>Step 1: Analysis</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.5s"></div>
+            <span>Step 2: Planning</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style="animation-delay: 1s"></div>
+            <span>Step 3: Execution</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 bg-orange-500 rounded-full animate-pulse" style="animation-delay: 1.5s"></div>
+            <span>Step 4: Growth</span>
+          </div>
         </div>
       </div>
     </div>
@@ -242,10 +471,25 @@
 
 <!-- CTA -->
 <section class="hero-gradient py-20">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white fade-in">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Ready to Turn Clicks into Customers?</h2>
-    <p class="text-lg mb-8">Book a free 45-minute strategy call to discuss how we can scale your Google Ads campaigns.</p>
-    <a href="#book-call" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg">Book a Call</a>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white animate-fade-in-up">
+    <div class="mb-8">
+      <div class="inline-block bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-6 py-3 mb-6">
+        <span class="text-sm font-semibold">Limited Spots Available</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6">Ready to Turn Clicks into Customers?</h2>
+      <p class="text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed">Book a free 45-minute strategy call to discuss how we can scale your Google Ads campaigns and grow your business.</p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="#book-call" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 animate-pulse-hover">
+        Book Your Free Strategy Call
+      </a>
+      <a href="#case-studies" class="btn-secondary bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-emerald-600 animate-pulse-hover">
+        See Our Results
+      </a>
+    </div>
+    <div class="mt-8 text-emerald-200 text-sm">
+      <i class="fas fa-shield-alt mr-2"></i> No obligation • No long-term contracts • Cancel anytime
+    </div>
   </div>
 </section>
 

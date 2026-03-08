@@ -59,17 +59,9 @@
       }
     </style>
 
-    <script>
-      partytown = {
-	  forward: ["dataLayer.push", "gtag"]
-      };
-    </script>
-
-    <script src="https://unpkg.com/@builder.io/partytown@0.10.3/lib/partytown.js"></script>
-    
     <!-- Google tag (gtag.js) -->
-    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-QSL6JT6MYG"></script>
-    <script type="text/partytown">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSL6JT6MYG"></script>
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());

@@ -19,6 +19,13 @@
     <link rel="icon" href="/images/ppclicks.ico" />
 
     <style>
+      html {
+        overflow-x: hidden;
+        max-width: 100vw;
+      }
+      body {
+        max-width: 100vw;
+      }
       * { font-family: 'Inter', sans-serif; }
       .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
       .btn-primary {
@@ -139,20 +146,29 @@
       }
     </style>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSL6JT6MYG"></script>
+    <!-- PartyTown - Local -->
     <script>
+      partytown = {
+        forward: ['dataLayer.push'],
+        lib: '/partytown/'
+      };
+    </script>
+    <script src="/partytown/partytown.js"></script>
+
+    <!-- Google Analytics via PartyTown -->
+    <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-QSL6JT6MYG');
     </script>
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-QSL6JT6MYG"></script>
     
     <!-- Mobile Navigation & Animations -->
     <style>
       #mobile-menu {
         display: none;
+        overflow-x: hidden;
       }
       #mobile-menu.active {
         display: block;

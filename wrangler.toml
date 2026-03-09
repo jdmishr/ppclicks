@@ -1,8 +1,4 @@
 name = "ppclicks"
-compatibility_date = "2025-10-19"
+compatibility_date = "2025-03-09"
 
-# This tells Wrangler where your static files are
 pages_build_output_dir = "public"
-
-[site]
-bucket = "./public"

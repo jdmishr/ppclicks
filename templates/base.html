@@ -5,34 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PPClicks – Google Ads Management That Prints Money</title>
     <meta name="description" content="Expert Google Ads management for local businesses. Turn ad spend into measurable growth with our certified team. Get a free audit today!" />
-
+    
     <!-- Twind CDN -->
-<script src="https://cdn.twind.style"></script>
+    <script src="https://cdn.twind.style"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
+    
     <link rel="icon" href="/images/ppclicks.ico" />
-
+    
     <style>
       html {
-        overflow-x: hidden;
+	  overflow-x: hidden;
       }
       body {
-        overflow-x: hidden;
-        max-width: 100%;
+	  overflow-x: hidden;
+	  max-width: 100%;
       }
       *, *::before, *::after {
-        box-sizing: border-box;
-        max-width: 100%;
+	  box-sizing: border-box;
+	  max-width: 100%;
       }
       img, video, iframe, canvas {
-        max-width: 100%;
-        height: auto;
+	  max-width: 100%;
+	  height: auto;
       }
       * { font-family: 'Inter', sans-serif; }
       .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
@@ -75,111 +75,113 @@
       
       /* Animation Keyframes */
       @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+	  from {
+	      opacity: 0;
+	      transform: translateY(30px);
+	  }
+	  to {
+	      opacity: 1;
+	      transform: translateY(0);
+	  }
       }
       .animate-fade-in-up {
-        animation: fadeInUp 0.6s ease-out;
+	  animation: fadeInUp 0.6s ease-out;
       }
       
       @keyframes fadeInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+	  from {
+	      opacity: 0;
+	      transform: translateX(-30px);
+	  }
+	  to {
+	      opacity: 1;
+	      transform: translateX(0);
+	  }
       }
       .animate-fade-in-left {
-        animation: fadeInLeft 0.6s ease-out;
+	  animation: fadeInLeft 0.6s ease-out;
       }
       
       @keyframes fadeInRight {
-        from {
-          opacity: 0;
-          transform: translateX(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+	  from {
+	      opacity: 0;
+	      transform: translateX(30px);
+	  }
+	  to {
+	      opacity: 1;
+	      transform: translateX(0);
+	  }
       }
       .animate-fade-in-right {
-        animation: fadeInRight 0.6s ease-out;
+	  animation: fadeInRight 0.6s ease-out;
       }
       
       @keyframes scaleIn {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
+	  from {
+	      opacity: 0;
+	      transform: scale(0.9);
+	  }
+	  to {
+	      opacity: 1;
+	      transform: scale(1);
+	  }
       }
       .animate-scale-in {
-        animation: scaleIn 0.5s ease-out;
+	  animation: scaleIn 0.5s ease-out;
       }
       
       
       @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
+	  0%, 100% { transform: scale(1); }
+	  50% { transform: scale(1.05); }
       }
       .animate-pulse-hover:hover {
-        animation: pulse 0.3s ease-out;
+	  animation: pulse 0.3s ease-out;
       }
       
       .logo-hover:hover {
-        transform: scale(1.05);
-        transition: transform 0.3s ease;
+	  transform: scale(1.05);
+	  transition: transform 0.3s ease;
       }
       
       @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-        40% { transform: translateY(-10px); }
-        60% { transform: translateY(-5px); }
+	  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+	  40% { transform: translateY(-10px); }
+	  60% { transform: translateY(-5px); }
       }
       .animate-bounce {
-        animation: bounce 2s infinite;
+	  animation: bounce 2s infinite;
       }
     </style>
 
     <!-- PartyTown - Local -->
     <script>
       partytown = {
-        forward: ['dataLayer.push'],
-        lib: '/partytown/'
+	  forward: ['dataLayer.push'],
+	  lib: '/partytown/'
       };
     </script>
-    <script src="/partytown/partytown.js"></script>
+    <!-- <script src="/partytown/partytown.js"></script>
+      -->
 
-    <!-- Google Analytics via PartyTown -->
-    <script type="text/partytown">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSL6JT6MYG"></script>
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-QSL6JT6MYG');
     </script>
-    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-QSL6JT6MYG"></script>
-    
+
     <!-- Mobile Navigation & Animations -->
     <style>
       #mobile-menu {
-        display: none;
-        overflow-x: hidden;
+	  display: none;
+	  overflow-x: hidden;
       }
       #mobile-menu.active {
-        display: block;
+	  display: block;
       }
     </style>
     
@@ -214,145 +216,145 @@
 	</div>
       </div>
     </nav>
-
+    
     {% block content %} {% endblock content %}
-
+    
     <footer class="bg-gray-900 text-white py-12 md:py-16 overflow-hidden">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-4 gap-8 mb-12 animate-fade-in-up">
-          <div class="md:col-span-2">
-            <div class="mb-4">
-              <img src="/images/ppclicks_logo.webp" width="150" alt="PPClicks Logo">
-            </div>
-            <p class="text-gray-300 mb-6 max-w-md">Google Ads management that prints money for local businesses. Get measurable growth with our expert team.</p>
-            <div class="flex flex-wrap gap-4">
-              <span class="bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-medium">Google Partner</span>
-              <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">$200K+ Managed</span>
-              <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">4.3× Avg ROAS</span>
-            </div>
-          </div>
-          <div>
-            <h4 class="font-semibold mb-4 text-lg">Services</h4>
-            <ul class="space-y-3 text-gray-300">
-              <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='services/search-ads')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Search Ads</a></li>
-              <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='services/local-services-ads')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Local Services Ads</a></li>
-              <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='services/remarketing')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Remarketing</a></li>
-              <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='services/landing-pages')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Landing Pages</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-semibold mb-4 text-lg">Company</h4>
-            <ul class="space-y-3 text-gray-300">
-              <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> About</a></li>
-              <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/case-studies')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Case Studies</a></li>
-              <li><a class="hover:text-emerald-400 transition-colors duration-300" href="/career"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Careers</a></li>
-              <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/contact')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Contact</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="border-t border-gray-800 pt-8">
-          <div class="grid md:grid-cols-3 gap-8">
-            <div class="md:col-span-2">
-              <h4 class="font-semibold mb-4 text-lg">Stay Updated</h4>
-              <p class="text-gray-300 mb-4">Get the latest Google Ads tips and industry insights delivered to your inbox.</p>
-              <form class="flex flex-col sm:flex-row gap-3">
-                <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-emerald-500 text-white placeholder-gray-500" required>
-                <button class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 transform hover:scale-105 animate-pulse-hover">Subscribe</button>
-              </form>
-            </div>
-            <div>
-              <h4 class="font-semibold mb-4 text-lg">Connect</h4>
-              <div class="flex space-x-4 mb-6">
-                <a class="text-gray-400 hover:text-emerald-400 transition-colors duration-300 bg-gray-800 p-3 rounded-full hover:bg-gray-700" href="#">
-                  <i class="fab fa-linkedin text-xl"></i>
-                </a>
-                <a class="text-gray-400 hover:text-emerald-400 transition-colors duration-300 bg-gray-800 p-3 rounded-full hover:bg-gray-700" href="#">
-                  <i class="fab fa-twitter text-xl"></i>
-                </a>
-                <a class="text-gray-400 hover:text-emerald-400 transition-colors duration-300 bg-gray-800 p-3 rounded-full hover:bg-gray-700" href="#">
-                  <i class="fab fa-facebook text-xl"></i>
-                </a>
-              </div>
-              <div class="text-gray-400 text-sm">
-                <p>Questions? <a href="{{ get_url(path='company/contact')}}" class="text-emerald-400 hover:text-white transition-colors duration-300">Contact us</a></p>
-                <p class="mt-2">We respond within 24 hours.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p>&copy; 2026 PPClicks. All rights reserved.</p>
-              <div class="flex space-x-6">
-                <a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/privacy-policy')}}">Privacy Policy</a>
-                <a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/terms-of-service')}}">Terms of Service</a>
-                <a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/contact')}}">Support</a>
-              </div>
-            </div>
-            <div class="mt-4 text-gray-500 text-xs">
-              Google Ads Certified Partner • Results may vary • No guarantees expressed or implied
-            </div>
-          </div>
-        </div>
+	<div class="grid md:grid-cols-4 gap-8 mb-12 animate-fade-in-up">
+	  <div class="md:col-span-2">
+	    <div class="mb-4">
+	      <img src="/images/ppclicks_logo.webp" width="150" alt="PPClicks Logo">
+	    </div>
+	    <p class="text-gray-300 mb-6 max-w-md">Google Ads management that prints money for local businesses. Get measurable growth with our expert team.</p>
+	    <div class="flex flex-wrap gap-4">
+	      <span class="bg-emerald-500 text-white px-3 py-1 rounded-full text-sm font-medium">Google Partner</span>
+	      <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">$200K+ Managed</span>
+	      <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">4.3× Avg ROAS</span>
+	    </div>
+	  </div>
+	  <div>
+	    <h4 class="font-semibold mb-4 text-lg">Services</h4>
+	    <ul class="space-y-3 text-gray-300">
+	      <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='services/search-ads')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Search Ads</a></li>
+	      <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='services/local-services-ads')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Local Services Ads</a></li>
+	      <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='services/remarketing')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Remarketing</a></li>
+	      <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='services/landing-pages')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Landing Pages</a></li>
+	    </ul>
+	  </div>
+	  <div>
+	    <h4 class="font-semibold mb-4 text-lg">Company</h4>
+	    <ul class="space-y-3 text-gray-300">
+	      <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> About</a></li>
+	      <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/case-studies')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Case Studies</a></li>
+	      <li><a class="hover:text-emerald-400 transition-colors duration-300" href="/career"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Careers</a></li>
+	      <li><a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/contact')}}"><i class="fas fa-chevron-right text-emerald-400 mr-2 text-sm"></i> Contact</a></li>
+	    </ul>
+	  </div>
+	</div>
+	
+	<div class="border-t border-gray-800 pt-8">
+	  <div class="grid md:grid-cols-3 gap-8">
+	    <div class="md:col-span-2">
+	      <h4 class="font-semibold mb-4 text-lg">Stay Updated</h4>
+	      <p class="text-gray-300 mb-4">Get the latest Google Ads tips and industry insights delivered to your inbox.</p>
+	      <form class="flex flex-col sm:flex-row gap-3">
+		<input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-emerald-500 text-white placeholder-gray-500" required>
+		<button class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 transform hover:scale-105 animate-pulse-hover">Subscribe</button>
+	      </form>
+	    </div>
+	    <div>
+	      <h4 class="font-semibold mb-4 text-lg">Connect</h4>
+	      <div class="flex space-x-4 mb-6">
+		<a class="text-gray-400 hover:text-emerald-400 transition-colors duration-300 bg-gray-800 p-3 rounded-full hover:bg-gray-700" href="#">
+		  <i class="fab fa-linkedin text-xl"></i>
+		</a>
+		<a class="text-gray-400 hover:text-emerald-400 transition-colors duration-300 bg-gray-800 p-3 rounded-full hover:bg-gray-700" href="#">
+		  <i class="fab fa-twitter text-xl"></i>
+		</a>
+		<a class="text-gray-400 hover:text-emerald-400 transition-colors duration-300 bg-gray-800 p-3 rounded-full hover:bg-gray-700" href="#">
+		  <i class="fab fa-facebook text-xl"></i>
+		</a>
+	      </div>
+	      <div class="text-gray-400 text-sm">
+		<p>Questions? <a href="{{ get_url(path='company/contact')}}" class="text-emerald-400 hover:text-white transition-colors duration-300">Contact us</a></p>
+		<p class="mt-2">We respond within 24 hours.</p>
+	      </div>
+	    </div>
+	  </div>
+	  
+	  <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+	    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+	      <p>&copy; 2026 PPClicks. All rights reserved.</p>
+	      <div class="flex space-x-6">
+		<a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/privacy-policy')}}">Privacy Policy</a>
+		<a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/terms-of-service')}}">Terms of Service</a>
+		<a class="hover:text-emerald-400 transition-colors duration-300" href="{{ get_url(path='company/contact')}}">Support</a>
+	      </div>
+	    </div>
+	    <div class="mt-4 text-gray-500 text-xs">
+	      Google Ads Certified Partner • Results may vary • No guarantees expressed or implied
+	    </div>
+	  </div>
+	</div>
       </div>
     </footer>
-
+    
     <!-- Scripts -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
+	  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+	  const mobileMenu = document.getElementById("mobile-menu");
 
-        // Mobile menu toggle
-        if (mobileMenuBtn && mobileMenu) {
-          mobileMenuBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            mobileMenu.classList.toggle("active");
-            
-            // Toggle icon between bars and times
-            const icon = mobileMenuBtn.querySelector("i");
-            if (mobileMenu.classList.contains("active")) {
-              icon.classList.remove("fa-bars");
-              icon.classList.add("fa-times");
-            } else {
-              icon.classList.remove("fa-times");
-              icon.classList.add("fa-bars");
-            }
-          });
+	  // Mobile menu toggle
+	  if (mobileMenuBtn && mobileMenu) {
+	      mobileMenuBtn.addEventListener("click", function (e) {
+		  e.preventDefault();
+		  mobileMenu.classList.toggle("active");
+		  
+		  // Toggle icon between bars and times
+		  const icon = mobileMenuBtn.querySelector("i");
+		  if (mobileMenu.classList.contains("active")) {
+		      icon.classList.remove("fa-bars");
+		      icon.classList.add("fa-times");
+		  } else {
+		      icon.classList.remove("fa-times");
+		      icon.classList.add("fa-bars");
+		  }
+	      });
 
-          // Close mobile menu when clicking outside
-          document.addEventListener("click", function (e) {
-            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-              mobileMenu.classList.remove("active");
-              const icon = mobileMenuBtn.querySelector("i");
-              icon.classList.remove("fa-times");
-              icon.classList.add("fa-bars");
-            }
-          });
-        }
+	      // Close mobile menu when clicking outside
+	      document.addEventListener("click", function (e) {
+		  if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+		      mobileMenu.classList.remove("active");
+		      const icon = mobileMenuBtn.querySelector("i");
+		      icon.classList.remove("fa-times");
+		      icon.classList.add("fa-bars");
+		  }
+	      });
+	  }
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-          anchor.addEventListener("click", function (e) {
-            const targetId = this.getAttribute("href");
-            if (targetId && targetId !== "#") {
-              const target = document.querySelector(targetId);
-              if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: "smooth" });
-                
-                // Close mobile menu on smooth scroll click
-                if (mobileMenu && mobileMenu.classList.contains("active")) {
-                  mobileMenu.classList.remove("active");
-                  const icon = mobileMenuBtn.querySelector("i");
-                  icon.classList.remove("fa-times");
-                  icon.classList.add("fa-bars");
-                }
-              }
-            }
-          });
-        });
+	  // Smooth scroll for anchor links
+	  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+	      anchor.addEventListener("click", function (e) {
+		  const targetId = this.getAttribute("href");
+		  if (targetId && targetId !== "#") {
+		      const target = document.querySelector(targetId);
+		      if (target) {
+			  e.preventDefault();
+			  target.scrollIntoView({ behavior: "smooth" });
+			  
+			  // Close mobile menu on smooth scroll click
+			  if (mobileMenu && mobileMenu.classList.contains("active")) {
+			      mobileMenu.classList.remove("active");
+			      const icon = mobileMenuBtn.querySelector("i");
+			      icon.classList.remove("fa-times");
+			      icon.classList.add("fa-bars");
+			  }
+		      }
+		  }
+	      });
+	  });
       });
     </script>
     {% block additionalscript %} {% endblock additionalscript %}
